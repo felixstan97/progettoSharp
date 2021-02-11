@@ -9,8 +9,11 @@
     <ul class="lista-lavori">
         <li *ngFor="let lavoro of lavori">
             <div class="lavoro">
-                <h3>{{lavoro.titolo}}</h3>
-                <h5>{{lavoro.citta}}</h5>
+                <h3 (click)="mostraDettagli(lavoro.id)">{{lavoro.titolo}}</h3>
+                <div class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h5>{{lavoro.citta}}</h5>
+                </div>
                 <p>{{lavoro.descrizione}}</p>
             </div>
         </li>
