@@ -1,5 +1,14 @@
 @import "../../variabili.scss";
-
+.logo{
+    position:absolute;
+    width: 11rem;
+    top: .2rem;
+    // line-height: 6.8rem;
+}
+.logo img{
+    width: 100%;
+    border-radius: 10rem;
+}
 .navbarWrapper{
     position: fixed;
     background-color: $verdino;
@@ -30,3 +39,27 @@
     }
 }
 
+@media screen and (max-width: 800px){
+    .logo{
+        position:absolute;
+        justify-content: center;
+        justify-self: center;
+        line-height: 6rem;
+        width: 9rem;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 660px){
+
+    //da qui in poi mettiamo il menu a hamburger
+
+    .logo{
+        position:absolute;
+        justify-content: center;
+        justify-self: center;
+        line-height: 5rem;
+        width: 6rem;
+        margin: auto;
+    }
+}
