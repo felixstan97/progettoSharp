@@ -1,5 +1,5 @@
 
-<div class="navbarWrapper">
+<div class="navbarWrapper" (scroll)="onWindowScroll()">
     <div class="logo"><img src="../../assets/img/logo2000.png" /> </div>
     <ul>
         <li (click)="redirectToHome()">Home</li>
@@ -7,4 +7,7 @@
         <li (click)="redirectToCorsi()">Corsi</li>
         <li (click)="redirectToContatti()">Contattaci</li>
     </ul>
+    <span class="hamburger-menu">
+        <i class="fas fa-bars"></i>
+    </span>
 </div>

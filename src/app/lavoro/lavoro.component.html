@@ -1,1 +1,18 @@
-<p>lavoro works!</p>
+<h2>Le nostre offerte di lavoro</h2>
+<div class="home-main-content">
+    <aside class="filtri-lavoro">
+        <h4>Filtra tra le offerte:</h4>
+    </aside>
+    <aside class="filtri-piccolo">
+        <span>F</span>
+    </aside>
+    <ul class="lista-lavori">
+        <li *ngFor="let lavoro of lavori">
+            <div class="lavoro">
+                <h3>{{lavoro.titolo}}</h3>
+                <h5>{{lavoro.citta}}</h5>
+                <p>{{lavoro.descrizione}}</p>
+            </div>
+        </li>
+    </ul>
+</div>
