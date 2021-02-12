@@ -1,1 +1,76 @@
-<p>corso works!</p>
+<div class="titoloEfiltro">
+    <h2>I nostri corsi</h2>
+    <div class="filtri-corso">
+        <h4>Filtra tra i corsi</h4>
+        <form>
+        <input type="text" placeholder="Cerca per parola chiave...">
+        <div class="prova-grid">
+            <div>
+                <label>
+                    Gratis
+                    <input type="checkbox" name="gratis" checked>
+                </label>
+            </div>
+            <div>
+                <label>
+                    A pagamento
+                    <input type="checkbox"  name="pagamento" checked>
+                </label>
+            </div>
+            <div>
+                <span>
+                    <select multiple name="citta">
+                        <option value="*">--Tutte le città--</option>
+                        <option *ngFor="let corso of corsi" [value]="corso.citta">{{corso.citta}}</option>
+                    </select>
+                </span>
+            </div>
+            <div>
+                <select multiple name="durata">
+                    <option value="*">--Qualsiasi durata--</option>
+                    <option *ngFor="let corso of corsi" [value]="corso.durata">{{corso.durata}}</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <button type="submit" >Cerca</button>
+        </div>
+        </form>
+        <!-- <div class="lista-filtri">
+            <label>
+                Gratis
+                <input type="checkbox" checked>
+            </label>
+            <label>
+                A pagamento
+                <input type="checkbox" checked>
+            </label>
+            <span>   
+                <select>
+                    <option value="">--Scegli una città--</option>
+                    <option *ngFor="let corso of corsi">{{corso.citta}}</option>
+                </select>
+            </span>
+                <select>
+                <option value="">--Scegli durata--</option>
+                <option *ngFor="let corso of corsi">{{corso.durata}}</option>
+            </select>
+            <button type="submit">Cerca</button>
+        </div> -->
+    </div>
+</div>
+
+<div class="home-main-content">
+    <ul class="lista-corsi">
+        <li *ngFor="let corso of corsi">
+            <div class="corso">
+                <h3 (click)="mostraDettagli(corso.id)">{{corso.titolo}}</h3>
+                <div class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h5>{{corso.citta}}</h5>
+                </div>
+                <p>{{corso.descrizione}}</p>
+            </div>
+        </li>
+    </ul>
+</div>
