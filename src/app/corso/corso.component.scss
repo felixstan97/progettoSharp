@@ -15,6 +15,16 @@
         background-color: #fff;
         padding: 1rem;
         box-shadow: 1px 1px 10px $marroncino;
+        margin-bottom: 5rem;
+
+        input.ricerca {
+            width: 100%;
+            padding: .3rem;
+            margin-top: .5rem;
+            outline: none;
+            border: 1px solid grey;
+            border-radius: 7px;
+        }
         
 
         .prova-grid{
@@ -63,20 +73,11 @@
     justify-content: space-around;
 }
 
-
-
-.filtri-piccolo {
-    display: none;
-    height: 50rem;
-    width: 50px;
-    background-color: #fff;
-    padding: 1rem;
-    box-shadow: 1px 1px 10px $marroncino;
-}
-
 .lista-corsi {
     list-style: none;
-    width: calc(100% - 230px);
+    // width: calc(100% - 230px);
+    // width: 85%;
+    width: $dimensioniContainer;
     
     .corso {
         background-color: #fff;

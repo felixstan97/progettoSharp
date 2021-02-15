@@ -43,4 +43,10 @@ export class LavoroComponent implements OnInit {
     console.log(id);
   }
 
+  selezionaCat(value : string) {
+    let tutteCategorie = document.getElementsByClassName('sottocategorie')
+    let sottoCategoria = document.getElementById(value);
+    sottoCategoria!.style.display = 'block';
+  }
+
 }
