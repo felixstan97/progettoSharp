@@ -2,7 +2,6 @@
 
 .profiloWrapper {
     width: $dimensioniContainer;
-    height: 50rem;         
     margin: auto;
     padding-top: 4rem;
     padding-bottom: 1rem;
@@ -75,12 +74,10 @@
         main {
             width: 60%;
             height: 100%;
-            background-color: purple;
-            color: #fff;
 
             .le-mie-competenze {
                 padding: 1rem;
-                border: 2px solid #fff;
+                background-color: #fff;
 
                 h4 {
                     padding-bottom: 1rem;
@@ -114,12 +111,18 @@
             }
 
             .i-miei-corsi {
+                margin-top: 2rem;
                 padding: 1rem;
-                border: 2px solid grey;
+                background-color: #fff;
+
 
                 h4 {
                     padding-bottom: 1rem;
                     text-align: center;
+                }
+
+                ul {
+                    list-style: none;
                 }
             }
         }
