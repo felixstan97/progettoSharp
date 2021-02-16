@@ -33,6 +33,11 @@ export class NavbarComponent implements OnInit {
     window.scroll(0,0);
   }
 
+  redirectToProfilo(){
+    this.router.navigate(['profilo']);
+    window.scroll(0,0);
+  }
+
 
   ngOnInit(): void {
   }

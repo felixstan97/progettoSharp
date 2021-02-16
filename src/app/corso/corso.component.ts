@@ -17,7 +17,12 @@ export class CorsoComponent implements OnInit {
       titolo : "Sviluppatore Front-end",
       citta : "Torino",
       descrizione : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, accusantium magni. Sint reiciendis dolores deleniti maiores deserunt sunt enim velit dolor quasi, vero cumque nemo possimus obcaecati culpa blanditiis ullam.",
-      durata: "6 mesi"
+      durata: "6 mesi",
+      categoria: "informatica",
+      edizione: "2021-2022",
+      certificazione: true,
+      costo: 500,
+      programma: "programma del corso: "
     },
     {
       id: 2,

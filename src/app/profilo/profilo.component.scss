@@ -1,0 +1,127 @@
+@import "../../variabili.scss";
+
+.profiloWrapper {
+    width: $dimensioniContainer;
+    height: 50rem;         
+    margin: auto;
+    padding-top: 4rem;
+    padding-bottom: 1rem;
+
+    h2 {
+        padding: 1rem;
+    }
+
+
+    .profilo-main-content {
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+
+        aside {
+            width: 35%;
+            height: 100%;
+
+            .info-personali {
+                background-color: $marroncinoChiaro;
+                width: 100%;
+                padding: 1rem;
+
+                .immagine-profilo {
+                    text-align: center;
+                    width: 8rem;
+                    height: 8rem;
+                    border-radius: 50%;
+                    margin: auto;
+                    overflow: hidden;
+                    
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                p {
+                    font-size: .8rem;
+                    font-style: italic;
+                    padding: .7rem 0;
+                    
+                    span {
+                        font-size: .9rem;
+                        font-style: normal;
+                        text-align: right;
+                    }
+                }
+
+            }
+
+            .calendario-corsi {
+                background-color: $verdino;
+                width: 100%;
+                padding: .3rem;
+
+                table {
+                    width: 100%;
+
+                    td, th {
+                        border: 1px solid #000;
+                        width: calc(100% / 6);
+                        font-size: small;
+                    }
+
+                }
+            }
+        }
+
+        main {
+            width: 60%;
+            height: 100%;
+            background-color: purple;
+            color: #fff;
+
+            .le-mie-competenze {
+                padding: 1rem;
+                border: 2px solid #fff;
+
+                h4 {
+                    padding-bottom: 1rem;
+                    text-align: center;
+                }
+
+                div[class^="competenze"] {
+                    padding: .5rem 0;
+                }
+
+                ul {
+                    list-style: none;
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+
+                    li {
+                        width: 8rem;
+                        text-align: center;
+                        padding: 1rem;
+
+                        i {
+                            font-size: 3rem;
+                        }
+
+                        .livello-competenza {
+                            font-size: .8rem;
+                        }
+                    }
+                }
+            }
+
+            .i-miei-corsi {
+                padding: 1rem;
+                border: 2px solid grey;
+
+                h4 {
+                    padding-bottom: 1rem;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

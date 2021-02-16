@@ -25,6 +25,10 @@ const routes: Routes = [
     loadChildren: () => import('./contatti/contatti.module').then(m => m.ContattiModule)
   },
   {
+    path:"profilo",
+    loadChildren: () => import('./profilo/profilo.module').then(m => m.ProfiloModule)
+  },
+  {
     path:"**",
     redirectTo:"home",
     pathMatch:"full"
