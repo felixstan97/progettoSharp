@@ -3,4 +3,20 @@
 .dettagliCorsoWrapper {
     height: 50rem;
     padding-top: 4rem;
+    width: $dimensioniContainer;
+    margin: auto;
+
+    .dettagli-main-content {
+        background-color: $marroncinoMoltoChiaro;
+
+        h2 {
+            padding: 1rem;
+            text-align: center;
+        }
+
+        
+    }
+
+
+
 }

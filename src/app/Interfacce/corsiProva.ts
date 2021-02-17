@@ -23,7 +23,7 @@ export const corsiProva : Corso[] = [
         id : 2, 
         titolo : "Angular Developer intermedio",
         // durata in ore
-        durata : 400,
+        durata : 200,
         costo : 0,
         programma : "Insegnamento dei linguaggi Angular e PHP per studenti di livello intermedio",
         certificazione : false,
@@ -41,7 +41,7 @@ export const corsiProva : Corso[] = [
         id : 3, 
         titolo : "JavaScript Developer intermedio",
         // durata in ore
-        durata : 400,
+        durata : 100,
         costo : 0,
         programma : "Insegnamento dei linguaggi Angular e PHP per studenti di livello intermedio",
         certificazione : false,
@@ -59,11 +59,11 @@ export const corsiProva : Corso[] = [
         id : 4, 
         titolo : "C# Developer intermedio",
         // durata in ore
-        durata : 400,
+        durata : 1000,
         costo : 0,
         programma : "Insegnamento dei linguaggi Angular e PHP per studenti di livello intermedio",
         certificazione : false,
-        categoria : "informatica",
+        categoria : "cucina",
         numeroEdizione : 3,
         inizioEdizione : "febbraio 2021",
         fineEdizione : "marzo 2021",

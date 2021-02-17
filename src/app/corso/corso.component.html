@@ -3,39 +3,51 @@
     <div class="filtri-corso">
         <h4>Filtra tra i corsi</h4>
         <form>
-        <input class="ricerca" type="text" placeholder="Cerca per parola chiave...">
-        <div class="prova-grid">
-            <div>
-                <label>
-                    Gratis
-                    <input type="checkbox" name="gratis" checked>
-                </label>
-            </div>
-            <div>
-                <label>
-                    A pagamento
-                    <input type="checkbox"  name="pagamento" checked>
-                </label>
-            </div>
-            <div>
-                <span>
-                    <select multiple name="categoria">
-                        <option value="*">--Tutte le categorie--</option>
-                        <option *ngFor="let corso of corsi" [value]="corso.categoria">{{corso.categoria}}</option>
+            <input class="ricerca" type="text" placeholder="Cerca per parola chiave...">
+            <div class="prova-grid">
+                <div>
+                    <label>
+                        Gratis
+                        <input type="checkbox" name="gratis" checked>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        A pagamento
+                        <input type="checkbox"  name="pagamento" checked>
+                    </label>
+                </div>
+                <div>
+                    <span>
+                        <select name="categoria">
+                            <option value="*">--Tutte le categorie--</option>
+                            <option (click)="scegliCategoria($event)" *ngFor="let cat of categorie" [value]="cat">{{cat}}</option>
+                        </select>
+                    </span>
+                </div>
+                <div>
+                    <select name="durata">
+                        <option value="*">--Qualsiasi durata--</option>
+                        <option *ngFor="let durata of durate" [value]="durata">{{durata}}</option>
                     </select>
-                </span>
+                </div>
             </div>
             <div>
-                <select multiple name="durata">
-                    <option value="*">--Qualsiasi durata--</option>
-                    <option *ngFor="let corso of corsi" [value]="corso.durata">{{corso.durata}}</option>
-                </select>
+                <button type="submit" >Cerca</button>
             </div>
-        </div>
-        <div>
-            <button type="submit" >Cerca</button>
-        </div>
         </form>
+        <div class="categorieScelte" *ngIf="categorieScelte.length > 0">
+            <h4>Categorie scelte:</h4>
+            <!-- Angular Material -->
+            <mat-chip-list aria-label="Fish selection">
+                <mat-chip *ngFor="let cat of categorieScelte" [selectable]="selectable"
+                        [removable]="removable" (removed)="remove(cat)">
+                {{cat}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+            </mat-chip-list>                      
+            <!-- fine Angular Material -->
+        </div>
     </div>
 </div>
 
