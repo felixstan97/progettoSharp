@@ -19,9 +19,9 @@
             </div>
             <div>
                 <span>
-                    <select multiple name="citta">
-                        <option value="*">--Tutte le città--</option>
-                        <option *ngFor="let corso of corsi" [value]="corso.citta">{{corso.citta}}</option>
+                    <select multiple name="categoria">
+                        <option value="*">--Tutte le categorie--</option>
+                        <option *ngFor="let corso of corsi" [value]="corso.categoria">{{corso.categoria}}</option>
                     </select>
                 </span>
             </div>
@@ -38,6 +38,24 @@
         </form>
     </div>
 </div>
+
+<div class="home-main-content">
+    <ul class="lista-corsi">
+        <li *ngFor="let corso of corsi">
+            <div class="corso">
+                <h3 (click)="mostraDettagli(corso.id)">
+                    <!-- <a routerLink="corso/dettagli/{{corso.id}}"> -->
+                    {{corso.titolo}}</h3>
+                <div class="location">
+                    <!-- <i class="fas fa-map-marker-alt"></i> -->
+                    <h5>{{corso.durata}}</h5>
+                </div>
+                <p>{{corso.programma}}</p>
+            </div>
+        </li>
+    </ul>
+</div>
+
 
 <!-- <div class="lista-filtri">
     <label>
@@ -60,19 +78,3 @@
     </select>
     <button type="submit">Cerca</button>
 </div>  -->
-
-
-<div class="home-main-content">
-    <ul class="lista-corsi">
-        <li *ngFor="let corso of corsi">
-            <div class="corso">
-                <h3 (click)="mostraDettagli(corso.id)">{{corso.titolo}}</h3>
-                <div class="location">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h5>{{corso.citta}}</h5>
-                </div>
-                <p>{{corso.descrizione}}</p>
-            </div>
-        </li>
-    </ul>
-</div>

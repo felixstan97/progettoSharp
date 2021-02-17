@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { utenteProva } from '../utenteProva';
+import { utenteProva } from '../Interfacce/utenteProva';
 
 @Component({
   selector: 'app-profilo',
@@ -11,7 +11,7 @@ export class ProfiloComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.utente);
+    
   }
 
   utente = utenteProva;
