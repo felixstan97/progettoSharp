@@ -46,16 +46,13 @@ export class CorsoComponent implements OnInit {
   categorieScelte : String[] = [];
 
   scegliCategoria(event:any) {
-    console.log("sono qui");
+    if(event.target.value == "*") return;
     if (!this.categorieScelte.includes(event.target.value)){
       this.categorieScelte.push(event.target.value);
-      console.log(event.target.value);
     }
+    event.target.value = "*";
   }
 
-  nuovoMetodo(){
-    console.log("prova prova");
-  }
 
   // ------------- Material CHIPS -------------------
   selectable = true;

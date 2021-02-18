@@ -1,55 +1,69 @@
 <div class="titoloEfiltro">
     <h2>I nostri corsi</h2>
+
     <div class="filtri-corso">
+
         <h4>Filtra tra i corsi</h4>
+
         <form>
             <div class="barra-ricerca">
                 <input class="ricerca" type="text" placeholder="Cerca per parola chiave...">
-                <button type="submit" >Cerca</button>
+                
             </div>
-            <div><i class="fas fa-chevron-down" (click)="toggleAdvancedSearch($event)"></i></div>
+            <div>Ricerca avanzata: <i class="fas fa-chevron-down" (click)="toggleAdvancedSearch($event)"></i></div>
             <div class="prova-grid height-zero" data-search>
-                <div>
-                    <label>
-                        Gratis
-                        <input type="checkbox" name="gratis" checked>
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        A pagamento
-                        <input type="checkbox"  name="pagamento" checked>
-                    </label>
-                </div>
-                <div>
-                    <span>
-                        <select name="categoria" (change)="scegliCategoria($event)">
-                            <option value="*">--Tutte le categorie--</option>
-                            <option *ngFor="let cat of categorie" [value]="cat">{{cat}}</option>
+                <div class="prova-filtri">
+                    <div>
+                        <label>Prezzo</label><br/>
+                        <select name="prezzo">
+                            <option value="*">--Tutti--</option>
+                            <option value="0">Gratis</option>
+                            <option value="1">A pagamento</option>
                         </select>
-                    </span>
+                    </div>
+                  
+                    <div>
+                        <label>Categorie</label><br/>
+                            <select name="categoria" (change)="scegliCategoria($event)">
+                                <option value="*">--Tutte--</option>
+                                <option *ngFor="let cat of categorie" [value]="cat">{{cat}}</option>
+                            </select>
+                    </div>
+
+                    <div>
+                        <label>Certificazione</label><br/>
+                        <select name="certificazione">
+                            <option value="*">--Tutti--</option>
+                            <option value="0">Senza certificazione</option>
+                            <option value="1">Con certificazione</option>
+                        </select>
+                    </div>
+
+                    <div class="durata">
+                        <!-- <select name="durata">
+                            <option value="*">--Qualsiasi durata--</option>
+                            <option *ngFor="let durata of durate" [value]="durata">{{durata}}</option>
+                        </select> -->
+                        <label>Durata (ore)</label><br/>
+                        <input type="number" placeholder="Min">
+                        <input type="number" placeholder="Max">
+                    </div>
                 </div>
-                <div>
-                    <select name="durata">
-                        <option value="*">--Qualsiasi durata--</option>
-                        <option *ngFor="let durata of durate" [value]="durata">{{durata}}</option>
-                    </select>
+                <div class="categorieScelte" *ngIf="categorieScelte.length > 0">
+                    <h4>Categorie scelte:</h4>
+                    <!-- Angular Material -->
+                    <mat-chip-list aria-label="Fish selection">
+                        <mat-chip *ngFor="let cat of categorieScelte" [selectable]="selectable" [removable]="removable"
+                            (removed)="remove(cat)">
+                            {{cat}}
+                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                        </mat-chip>
+                    </mat-chip-list>
+                    <!-- fine Angular Material -->
                 </div>
             </div>
-
+            <div class="bottone-cerca"><button type="submit">Cerca</button></div>
         </form>
-        <div class="categorieScelte" *ngIf="categorieScelte.length > 0">
-            <h4>Categorie scelte:</h4>
-            <!-- Angular Material -->
-            <mat-chip-list aria-label="Fish selection">
-                <mat-chip *ngFor="let cat of categorieScelte" [selectable]="selectable"
-                        [removable]="removable" (removed)="remove(cat)">
-                {{cat}}
-                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-                </mat-chip>
-            </mat-chip-list>                      
-            <!-- fine Angular Material -->
-        </div>
     </div>
 </div>
 
@@ -59,7 +73,8 @@
             <div class="corso">
                 <h3 (click)="mostraDettagli(corso.id)">
                     <!-- <a routerLink="corso/dettagli/{{corso.id}}"> -->
-                    {{corso.titolo}}</h3>
+                    {{corso.titolo}}
+                </h3>
                 <div class="location">
                     <!-- <i class="fas fa-map-marker-alt"></i> -->
                     <h5>{{corso.durata}}</h5>
