@@ -35,6 +35,17 @@
             flex-wrap: wrap;
             justify-content: space-evenly;
 
+            .fa-chevron-down{
+                font-size: large;
+            }
+
+
+
+            &.height-zero{
+                height: 0;
+                overflow: hidden;
+            }
+
             >*{
                 margin: 1rem;
             }

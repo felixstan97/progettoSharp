@@ -4,7 +4,11 @@
         <h4>Filtra tra i corsi</h4>
         <form>
             <input class="ricerca" type="text" placeholder="Cerca per parola chiave...">
-            <div class="prova-grid">
+            <div>
+                <button type="submit" >Cerca</button>
+            </div>
+            <div><i class="fas fa-chevron-down"></i></div>
+            <div class="prova-grid height-zero">
                 <div>
                     <label>
                         Gratis
@@ -32,9 +36,7 @@
                     </select>
                 </div>
             </div>
-            <div>
-                <button type="submit" >Cerca</button>
-            </div>
+
         </form>
         <div class="categorieScelte" *ngIf="categorieScelte.length > 0">
             <h4>Categorie scelte:</h4>
