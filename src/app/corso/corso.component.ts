@@ -49,32 +49,12 @@ export class CorsoComponent implements OnInit {
     if (!this.categorieScelte.includes(event.target.value)){
       this.categorieScelte.push(event.target.value);
     }
-    console.log(this.categorieScelte);
   }
 
 
-  // ----------- Material CHIPS -------------------
-  // visible = true;
+  // ------------- Material CHIPS -------------------
   selectable = true;
   removable = true;
-  // addOnBlur = true;
-  // readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-
-  // add(event: MatChipInputEvent): void {
-  //   const input = event.input;
-  //   const value = event.value;
-
-  //   // Add our fruit
-  //   if ((value || '').trim()) {
-  //     this.fruits.push({name: value.trim()});
-  //   }
-
-  //   // Reset the input value
-  //   if (input) {
-  //     input.value = '';
-  //   }
-  // }
-
   remove(cat: String): void {
     const index = this.categorieScelte.indexOf(cat);
 
@@ -82,6 +62,7 @@ export class CorsoComponent implements OnInit {
       this.categorieScelte.splice(index, 1);
     }
   }
+  // ------------ fine Material CHIPS --------------
   
 
 }
