@@ -3,8 +3,8 @@
     <div class="filtri-corso">
         <h4>Filtra tra i corsi</h4>
         <form>
-            <input class="ricerca" type="text" placeholder="Cerca per parola chiave...">
-            <div>
+            <div class="barra-ricerca">
+                <input class="ricerca" type="text" placeholder="Cerca per parola chiave...">
                 <button type="submit" >Cerca</button>
             </div>
             <div><i class="fas fa-chevron-down" (click)="toggleAdvancedSearch($event)"></i></div>
@@ -23,9 +23,9 @@
                 </div>
                 <div>
                     <span>
-                        <select name="categoria">
+                        <select name="categoria" (change)="scegliCategoria($event)">
                             <option value="*">--Tutte le categorie--</option>
-                            <option (click)="scegliCategoria($event)" *ngFor="let cat of categorie" [value]="cat">{{cat}}</option>
+                            <option *ngFor="let cat of categorie" [value]="cat">{{cat}}</option>
                         </select>
                     </span>
                 </div>

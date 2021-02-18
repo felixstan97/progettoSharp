@@ -21,16 +21,29 @@
             cursor: pointer;            
         }
 
+        .barra-ricerca{
+            display: flex;
+        
+            
+            input.ricerca {
+                width: calc(100% - 5rem);
+                padding: .3rem;
+                margin-top: .5rem;
+                outline: none;
+                border: 1px solid grey;
+                border-radius: 7px;
+            }
+
+            button{
+                width: 5rem;      
+                padding: .3rem 1rem;
+                border: none;
+
+        }
+        }
+
         
 
-        input.ricerca {
-            width: 100%;
-            padding: .3rem;
-            margin-top: .5rem;
-            outline: none;
-            border: 1px solid grey;
-            border-radius: 7px;
-        }
         
 
         .prova-grid{
@@ -66,12 +79,7 @@
             
 
         }
-        button{
-                        
-                padding: .3rem 1rem;
-                border: none;
-
-        }
+        
         
         .categorieScelte {
             padding-top: 1rem;

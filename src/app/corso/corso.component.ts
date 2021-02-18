@@ -53,6 +53,9 @@ export class CorsoComponent implements OnInit {
     }
   }
 
+  nuovoMetodo(){
+    console.log("prova prova");
+  }
 
   // ------------- Material CHIPS -------------------
   selectable = true;
