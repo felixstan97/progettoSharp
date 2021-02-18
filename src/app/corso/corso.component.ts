@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { corsiProva } from '../Interfacce/corsiProva';
-// import {FormBuilder} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-corso',
@@ -46,8 +46,10 @@ export class CorsoComponent implements OnInit {
   categorieScelte : String[] = [];
 
   scegliCategoria(event:any) {
+    console.log("sono qui");
     if (!this.categorieScelte.includes(event.target.value)){
       this.categorieScelte.push(event.target.value);
+      console.log(event.target.value);
     }
   }
 
@@ -64,5 +66,26 @@ export class CorsoComponent implements OnInit {
   }
   // ------------ fine Material CHIPS --------------
   
+  advancedSearchDisplay = false;
+  
+  toggleAdvancedSearch(event: any) {
+    
+    let advancedSearch = document.querySelector('.prova-grid')!;
+    let freccina = event.target;
 
+    if(this.advancedSearchDisplay){
+      advancedSearch.classList.remove("height-full");
+      advancedSearch.classList.add("height-zero");
+      freccina.classList = "fas fa-chevron-down";
+      this.advancedSearchDisplay = false;
+    } 
+    else if(!this.advancedSearchDisplay){
+      advancedSearch.classList.remove("height-zero");
+      advancedSearch.classList.add("height-full");
+      freccina.classList = "fas fa-chevron-up";
+      this.advancedSearchDisplay = true;    
+   }
+   
+
+  }
 }

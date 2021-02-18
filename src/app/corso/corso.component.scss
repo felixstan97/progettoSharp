@@ -16,6 +16,13 @@
         box-shadow: 1px 1px 10px $marroncino;
         margin-bottom: 5rem;
 
+        .fa-chevron-down, .fa-chevron-up{
+            font-size: large;
+            cursor: pointer;            
+        }
+
+        
+
         input.ricerca {
             width: 100%;
             padding: .3rem;
@@ -34,13 +41,12 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-evenly;
-
-            .fa-chevron-down{
-                font-size: large;
+            transition: all .9s ease;
+            
+            &.height-full{
+                height: auto;
             }
-
-
-
+            
             &.height-zero{
                 height: 0;
                 overflow: hidden;
