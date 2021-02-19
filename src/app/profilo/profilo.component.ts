@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { utenteProva } from '../Interfacce/utenteProva';
 
 @Component({
   selector: 'app-profilo',
@@ -13,8 +12,6 @@ export class ProfiloComponent implements OnInit {
   ngOnInit(): void {
     
   }
-
-  utente = utenteProva;
 
 
 }

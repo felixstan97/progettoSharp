@@ -1,0 +1,18 @@
+@import "../../../variabili.scss";
+
+.calendario-corsi {
+    background-color: $verdino;
+    width: 100%;
+    padding: .3rem;
+
+    table {
+        width: 100%;
+
+        td, th {
+            border: 1px solid #000;
+            width: calc(100% / 6);
+            font-size: small;
+        }
+
+    }
+}
