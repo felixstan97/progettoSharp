@@ -4,6 +4,10 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from './shared/shared.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from './layout/layout.module';
 
 const routes: Routes = [
   {
@@ -39,7 +43,10 @@ const routes: Routes = [
     HomeComponent
   ],
   imports: [
-    SharedModule,
+    BrowserModule,
+    LayoutModule,
+    FormsModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],

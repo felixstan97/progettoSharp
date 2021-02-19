@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ContattiComponent } from './contatti.component';
 import { RouterModule, Routes } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 const routes : Routes = [
   {
@@ -12,6 +13,7 @@ const routes : Routes = [
 @NgModule({
   declarations: [ContattiComponent],
   imports: [
+    SharedModule,
     RouterModule.forChild(routes)
   ]
 })

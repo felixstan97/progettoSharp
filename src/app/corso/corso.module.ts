@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { CorsoComponent } from './corso.component';
 import { DettagliCorsoComponent } from '../dettagli-corso/dettagli-corso.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 const routes : Routes = [
@@ -23,7 +24,7 @@ const routes : Routes = [
     DettagliCorsoComponent
   ],
   imports: [
-    CommonModule,
+    SharedModule,
     RouterModule.forChild(routes)
   ]
 

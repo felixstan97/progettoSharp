@@ -13,11 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
-    BrowserModule,
-    LayoutModule,
-    FormsModule,
-    BrowserAnimationsModule,
+    CommonModule,    
     MatChipsModule,
     MatFormFieldModule,
     MatIconModule,
@@ -26,10 +22,6 @@ import { MatIconModule } from '@angular/material/icon';
 
   exports:[
     CommonModule,
-    BrowserModule,
-    LayoutModule,
-    FormsModule,
-    BrowserAnimationsModule,
     MatChipsModule,
     MatFormFieldModule,
     MatIconModule,
