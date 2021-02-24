@@ -1,3 +1,5 @@
+import {Modulo} from './modulo';
+
 export interface Corso {
     id : number;
     titolo : String;
@@ -11,7 +13,7 @@ export interface Corso {
     inizioEdizione : String;
     fineEdizione : String;
     aula : String;
-    moduli : String[];
+    moduli : Modulo[];
     insegnanti : String[];
     responsabile : String;
     lezioniSettimanali: String[];
