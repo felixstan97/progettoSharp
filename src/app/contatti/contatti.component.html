@@ -1,36 +1,5 @@
 <div class="contattiWrapper">
-    <h2>I nostri contatti</h2>
-    <ul class="lista-contatti">
-        <li>
-            <i class="fas fa-phone"></i>
-            Telefono: 56464214679
-        </li>
-        <li>
-            <i class="fas fa-map-marker-alt"></i>
-            Indirizzo: <br/> Piazza della Vittoria, 50 - 38349 Padova
-        </li>
-        <li>
-            <i class="fas fa-at"></i>
-            E-Mail: info@lavorosharp.it
-        </li>
-        <li>
-            <i class="fas fa-key"></i>
-            PEC: lavorosharp@pec.it
-        </li>
-    </ul>
-    <div class="formDiContatto">
-        <h3>Contattaci</h3>
-        <form [formGroup]="formContatti" (ngSubmit)="doThisOnSubmit()">
-            <input type="text" placeholder="* Nome..." formControlName="nome" required>
-            <input type="text" placeholder="Cognome..." formControlName="cognome">
-            <input type="mail" placeholder="* E-mail..." formControlName="email" required>
-            <textarea cols="30" rows="10" placeholder="* Message..." formControlName="message"></textarea>
-            <div class="termini-condizioni">
-                <input formControlName="terminiCondizioni" required type="checkbox">
-                <span>Ho letto e accettato l'<a href="#">informativa privacy</a>.</span>
-            </div>
-            <button type="submit" [disabled]="!formContatti.valid">Invia</button>
-        </form>
-    </div>
+    <app-lista-contatti></app-lista-contatti>
+    <app-form-contatti></app-form-contatti>
 </div>
 

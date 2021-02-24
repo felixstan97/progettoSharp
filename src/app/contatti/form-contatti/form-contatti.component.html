@@ -1,0 +1,14 @@
+<div class="formDiContatto">
+    <h3>Contattaci</h3>
+    <form [formGroup]="formContatti" (ngSubmit)="doThisOnSubmit()">
+        <input type="text" placeholder="* Nome..." formControlName="nome" required>
+        <input type="text" placeholder="Cognome..." formControlName="cognome">
+        <input type="mail" placeholder="* E-mail..." formControlName="email" required>
+        <textarea cols="30" rows="10" placeholder="* Message..." formControlName="message"></textarea>
+        <div class="termini-condizioni">
+            <input formControlName="terminiCondizioni" required type="checkbox">
+            <span>Ho letto e accettato l'<a href="#">informativa privacy</a>.</span>
+        </div>
+        <button type="submit" [disabled]="!formContatti.valid">Invia</button>
+    </form>
+</div>

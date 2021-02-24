@@ -1,0 +1,25 @@
+h2 {
+    padding: 1rem 0 2rem 0;
+}
+
+@import "../../../variabili.scss";
+
+ul.lista-contatti {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    color: rgb(43,43,43);
+
+    li {
+        width: 10rem;
+        padding: 1rem;
+        text-align: center;
+
+        i {
+            display: block;
+            padding-bottom: .5rem;
+            font-size: 2rem;
+        }
+    }
+}
