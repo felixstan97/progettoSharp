@@ -1,4 +1,5 @@
 import { Corso } from './Corso';
+import { moduliProva } from './moduli';
 
 export const corsiProva : Corso[] = [
     {
@@ -14,7 +15,7 @@ export const corsiProva : Corso[] = [
         inizioEdizione : "febbraio 2021",
         fineEdizione : "marzo 2021",
         aula : "Aula Vienna",
-        moduli : ["Angular intermedio", "PHP intermedio"],
+        moduli : [moduliProva[0], moduliProva[1]],
         insegnanti : ["Mr. Bean"],
         responsabile : "Fausto Shortino",
         lezioniSettimanali: ["lun pm4", "mer am9", "gio am10"]
@@ -32,7 +33,7 @@ export const corsiProva : Corso[] = [
         inizioEdizione : "febbraio 2021",
         fineEdizione : "marzo 2021",
         aula : "Aula Vienna",
-        moduli : ["Angular intermedio", "PHP intermedio"],
+        moduli : [moduliProva[0], moduliProva[1]],
         insegnanti : ["Mr. Bean"],
         responsabile : "Fausto Shortino",
         lezioniSettimanali: ["lun pm4", "mer am9", "gio am10"]
@@ -50,7 +51,7 @@ export const corsiProva : Corso[] = [
         inizioEdizione : "febbraio 2021",
         fineEdizione : "marzo 2021",
         aula : "Aula Vienna",
-        moduli : ["Angular intermedio", "PHP intermedio"],
+        moduli : [moduliProva[0], moduliProva[1]],
         insegnanti : ["Mr. Bean"],
         responsabile : "Fausto Shortino",
         lezioniSettimanali: ["lun pm4", "mer am9", "gio am10"]
@@ -68,7 +69,7 @@ export const corsiProva : Corso[] = [
         inizioEdizione : "febbraio 2021",
         fineEdizione : "marzo 2021",
         aula : "Aula Vienna",
-        moduli : ["Angular intermedio", "PHP intermedio"],
+        moduli : [moduliProva[0], moduliProva[1]],
         insegnanti : ["Mr. Bean"],
         responsabile : "Fausto Shortino",
         lezioniSettimanali: ["lun pm4", "mer am9", "gio am10"]

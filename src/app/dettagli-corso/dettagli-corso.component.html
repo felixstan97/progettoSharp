@@ -1,8 +1,81 @@
 <div class="dettagliCorsoWrapper">
+    <h2>{{corso.titolo}}</h2>
     <div class="dettagli-main-content">
-        <h2>{{corso.titolo}}</h2>
-        <p>Durata: {{corso.durata}}</p>
-        <!-- <p *ngIf="">Gratuito</p>
-        <p *ngIf="corso.costo != 0"></p> -->
+        <div class="left-side">
+            <div class="descrizione">
+                <h4>Descrizione</h4>
+                <p>
+                    {{corso.programma}}
+                </p>
+                <ul>
+                    <li>
+                        Durata: {{corso.durata}}
+                    </li>
+                    <li *ngIf="corso.certificazione; then certificazione else no_certificazione"></li>
+                    <ng-template #certificazione>
+                        <li>
+                            Certificazione finale: sì
+                        </li>
+                    </ng-template>
+                    <ng-template #no_certificazione>
+                        <li>
+                            Certificazione finale: no
+                        </li>
+                    </ng-template>
+                </ul>
+            </div>
+            <div class="programma">
+                <h4>Programma</h4>
+                <ul>
+                    <li *ngFor="let modulo of corso.moduli">
+                        {{modulo.nome}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="right-side">
+            <h4>Dettagli corso</h4>
+            <ul>
+                <li>Lezioni settimanali
+                    <ul>
+                        <li *ngFor="let lezione of corso.lezioniSettimanali">
+                            {{lezione}}
+                        </li>
+                    </ul>
+                </li>
+                <li>Aula
+                    <ul>
+                        <li>{{corso.aula}}</li>
+                    </ul>
+                </li>
+                <li>Insegnanti
+                    <ul>
+                        <li *ngFor="let ins of corso.insegnanti">
+                            {{ins}}
+                        </li>
+                    </ul>
+                </li>
+                <li>Responsabile di corso
+                    <ul>
+                        <li>{{corso.responsabile}}</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="edizioni">
+        <div class="edizione-corrente">
+            <h4>Edizione corrente</h4>
+            <p>
+                {{corso.inizioEdizione}} - {{corso.fineEdizione}}
+            </p>
+        </div>
+        <div class="edizioni-future">
+            <h4>Prossime edizioni</h4>
+            <ul>
+                <li>Mese anno - iscrizioni aperte</li>
+                <li>Mese anno - iscrizioni non aperte</li>
+            </ul>
+        </div>
     </div>
 </div>

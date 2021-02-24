@@ -1,22 +1,94 @@
 @import "../../variabili.scss";
 
 .dettagliCorsoWrapper {
-    height: 50rem;
+    min-height: 100vh;
     padding-top: 4rem;
     width: $dimensioniContainer;
-    margin: auto;
+    margin: 0 auto 1rem auto;
+
+    h4 {
+        font-weight: bold;
+    }
+    
+    h2 {
+        text-align: center;
+        background-color: $marroncinoMoltoChiaro;
+        padding: 1rem;
+        margin: 0;
+    }
 
     .dettagli-main-content {
         background-color: $marroncinoMoltoChiaro;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 1rem;
 
-        h2 {
-            padding: 1rem;
-            text-align: center;
+        .left-side {
+            width: 60%;
+
+            >* {
+                padding: 1rem;
+            }
+
+            
+            .descrizione {
+                background-color: $verdinoScuro;
+                margin-bottom: 2rem;
+
+                ul {
+                    padding-left: 2rem;
+                }
+            }
+            
+            .programma {
+                background-color: $verdinoScuro;
+
+                ul {
+                    padding-left: 2rem;
+                }
+            }
         }
 
-        
+        .right-side {
+            width: 35%;
+            background-color: $verdino;
+
+            >* {
+                padding: 1rem;
+                margin: 0;
+            }
+
+            ul {
+                padding-left: 2rem;
+                padding-top: 0;
+            }
+        }  
+
+        @media screen and (max-width: 660px) {
+            display: block;
+
+            .left-side,
+            .right-side {
+                width: 100%;
+            }
+
+            .left-side .descrizione {
+                margin: 0;
+            }
+        }
+
     }
 
+    .edizioni {
+        background-color: $marroncinoChiaro;
+        padding: 1rem;
 
+        p {
+            padding-left: 2rem;
+        }
 
+        ul {
+            padding-left: 2rem;
+        }
+    }
 }
