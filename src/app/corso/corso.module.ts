@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { CorsoComponent } from './corso.component';
 import { DettagliCorsoComponent } from '../dettagli-corso/dettagli-corso.component';
 import { SharedModule } from '../shared/shared.module';
+import { FiltriCorsoComponent } from './filtri-corso/filtri-corso.component';
+import { ListaCorsiComponent } from './lista-corsi/lista-corsi.component';
 
 
 const routes : Routes = [
@@ -21,11 +23,17 @@ const routes : Routes = [
 @NgModule({
   declarations: [
     CorsoComponent,
+    FiltriCorsoComponent,
+    ListaCorsiComponent,
     DettagliCorsoComponent
   ],
   imports: [
     SharedModule,
     RouterModule.forChild(routes)
+  ],
+  exports: [
+    FiltriCorsoComponent,
+    ListaCorsiComponent
   ]
 
 })

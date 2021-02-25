@@ -1,0 +1,29 @@
+@import "../../../variabili.scss";
+
+.lista-corsi {
+    list-style: none;
+    // width: calc(100% - 230px);
+    width: 100%;
+    //width: $dimensioniContainer;
+    
+    .corso {
+        background-color: #fff;
+        margin-bottom: 2rem;
+        border-radius: .5rem;
+        padding: 1rem;
+        box-shadow: 1px 1px 10px $marroncino;
+
+        h3 {
+            cursor: pointer;
+        }
+
+        .location {
+            padding: .7rem 0;
+            
+            h5 {
+                display: inline-block;
+                padding-left: .5rem;
+            }
+        }
+    }
+}

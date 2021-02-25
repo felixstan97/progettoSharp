@@ -1,0 +1,118 @@
+@import "../../../variabili.scss";
+
+// .titoloEfiltro{
+//     padding-top: 4rem;
+//     padding-bottom: 1rem;
+//     width: $dimensioniContainer;
+//     margin: auto;
+    
+//     h2 {
+//         padding: 1rem;
+//     }
+
+        .filtri-corso {
+            background-color: #fff;
+            padding: 1rem;
+            box-shadow: 1px 1px 10px $marroncino;
+            margin-bottom: 5rem;
+            
+            
+            .barra-ricerca{
+                display: flex;
+                height: 2rem;
+                
+                
+                input.ricerca {
+                    width: 100%;
+                    height: 100%;
+                    outline: none;
+                    border: 1px solid grey;
+                    border-radius: 7px;
+                }
+            }
+            
+            
+            
+            .prova-grid{
+                top: 80%;
+                left: 0;
+                width: 100%;
+                position: relative;
+                
+                .fa-chevron-down, .fa-chevron-up{
+                    font-size: large;
+                    cursor: pointer;
+                    margin-top: 0.5rem;            
+                }
+
+                &.height-zero{
+                    height: 0;
+                    overflow: hidden;
+                }
+
+                &.height-full{
+                    height: auto;
+                }
+                        
+                    .prova-filtri{
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-evenly;
+                        transition: all .9s ease;
+                        
+                            
+                            
+                        >*{
+                            margin: 1rem;
+                            width: 150px;
+                            text-align: center;
+                        }
+                            
+                            
+                            
+                        select{
+                            width: auto;
+                            padding: .3rem;
+                            outline: none;
+            
+                            option:first-child{
+                                color: gray;
+                            }
+                        }
+                            
+                        .durata{
+                            input{
+                                max-width: 40%;
+                                padding: .3rem;
+                            }
+                        }
+                    }
+            
+                }
+                    
+                    
+                .categorieScelte {
+                    padding-top: 1rem;
+            
+                    mat-chip {
+                        background-color: $marroncino;
+                        color: #fff;
+                    }
+                }
+            }
+            
+            .bottone-cerca{
+                text-align: center;
+            
+                button{
+                    padding: .3rem 1rem;
+                    text-transform: uppercase;
+                    border-radius: 7px;
+                    border: 1px solid grey;
+                    font-weight: bold;
+                }
+            }
+                
+
+        
+//}
