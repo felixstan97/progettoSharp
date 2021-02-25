@@ -1,13 +1,15 @@
 @import "../../variabili.scss";
 
 .footerWrapper{
-    background-color: $verdinoScuro;
+    background-color: $color1;
+    color: $color3;
     width: 100%;
     min-height: 6rem;
     position: absolute;
     bottom: 0;
     left: 0;
     padding: 1rem;
+    margin-top: 2rem;
     ._container{
         width: $dimensioniContainer;
         margin: auto;

@@ -16,6 +16,39 @@ export class FiltriCorsoComponent implements OnInit {
 
   corsi = corsiProva;
 
+  minDurata = this.findMinDuration();
+
+  findMinDuration(){
+    if(this.corsi.length == 0) {
+      return 0;
+    } else { 
+      let duration = this.corsi[0].durata;
+      this.corsi.forEach(corso=>{
+        if(corso.durata < duration) {
+          duration = corso.durata;
+        }
+      })
+      return duration;
+    }
+  }
+
+  maxDurata = this.findMaxDuration();
+
+  findMaxDuration(){
+    if(this.corsi.length == 0) {
+      return 0;
+    } else { 
+      let duration = this.corsi[0].durata;
+      this.corsi.forEach(corso=>{
+        if(corso.durata > duration) {
+          duration = corso.durata;
+        }
+      })
+      return duration;
+    }
+  }
+
+
   categorie : String[] = [];
   durate : String[] = [
     "< 100 ore",
@@ -67,14 +100,12 @@ export class FiltriCorsoComponent implements OnInit {
       advancedSearch.classList.add("height-zero");
       freccina.classList = "fas fa-chevron-down";
       this.advancedSearchDisplay = false;
-      console.log('funziona');
     } 
     else if(!this.advancedSearchDisplay){
       advancedSearch.classList.remove("height-zero");
       advancedSearch.classList.add("height-full");
       freccina.classList = "fas fa-chevron-up";
       this.advancedSearchDisplay = true;
-      console.log('funziona2');    
    }
    
 

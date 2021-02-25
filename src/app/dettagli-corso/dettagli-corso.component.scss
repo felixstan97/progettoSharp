@@ -8,17 +8,22 @@
 
     h4 {
         font-weight: bold;
+        text-transform: uppercase;
     }
     
     h2 {
         text-align: center;
-        background-color: $marroncinoMoltoChiaro;
-        padding: 1rem;
         margin: 0;
+        padding-bottom: 1rem;
+    }
+
+    .dettagliContainer {
+        padding: 1.5rem;
+        margin-top: 1rem;
+        background-color: #fff;
     }
 
     .dettagli-main-content {
-        background-color: $marroncinoMoltoChiaro;
         display: flex;
         justify-content: space-between;
         padding-bottom: 1rem;
@@ -32,7 +37,7 @@
 
             
             .descrizione {
-                background-color: $verdinoScuro;
+                background-color: $color2-l;
                 margin-bottom: 2rem;
 
                 ul {
@@ -41,7 +46,7 @@
             }
             
             .programma {
-                background-color: $verdinoScuro;
+                background-color: $color2-l;
 
                 ul {
                     padding-left: 2rem;
@@ -51,7 +56,7 @@
 
         .right-side {
             width: 35%;
-            background-color: $verdino;
+            background-color: $color2-l;
 
             >* {
                 padding: 1rem;
@@ -80,7 +85,7 @@
     }
 
     .edizioni {
-        background-color: $marroncinoChiaro;
+        background-color: $color2-l;
         padding: 1rem;
 
         p {
@@ -90,5 +95,9 @@
         ul {
             padding-left: 2rem;
         }
+    }
+
+    @media screen and (max-width: 800px) {
+        width: 80%;
     }
 }

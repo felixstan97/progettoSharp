@@ -1,18 +1,23 @@
 @import "../../../variabili.scss";
 
 .calendario-corsi {
-    background-color: $verdino;
+    background-color: $color1;
+    color: $color3;
     width: 100%;
     padding: .3rem;
+
+    h4 {
+        text-transform: uppercase;
+        text-align: center;
+    }
 
     table {
         width: 100%;
 
         td, th {
-            border: 1px solid #000;
+            border: 1px solid $color3;
             width: calc(100% / 6);
             font-size: small;
         }
-
     }
 }

@@ -9,7 +9,7 @@ ul.lista-contatti {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    color: rgb(43,43,43);
+    color: $color1;
 
     li {
         width: 10rem;
