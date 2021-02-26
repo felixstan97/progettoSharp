@@ -1,30 +1,11 @@
-<h2>I nostri contatti</h2>
-<ul class="lista-contatti">
-
-    <li *ngFor='let contatto of contatti'>
-        <i [class]='contatto.class'></i>
-        <p> {{contatto.type}}: <br> {{contatto.text}}</p>
-    </li>
-    <!--
-    
-    <li>
-        <i class="fas fa-phone"></i>
-        Telefono: 56464214679
-    </li>
-    <li>
-        <i class="fas fa-map-marker-alt"></i>
-        Indirizzo: <br/> Piazza della Vittoria, 50 - 38349 Padova
-    </li>
-    <li>
-        <i class="fas fa-at"></i>
-        E-Mail: info@lavorosharp.it
-    </li>
-    <li>
-        <i class="fas fa-key"></i>
-        PEC: lavorosharp@pec.it
-    </li>
-    
-    -->
-</ul>
+<div class="lista-contatti-container">
+    <h2>I nostri contatti</h2>
+    <ul class="lista-contatti">
+        <li *ngFor='let contatto of contatti'>
+            <i [class]='contatto.class'></i>
+            <p> {{contatto.type}}: <br> {{contatto.text}}</p>
+        </li>
+    </ul>
+</div>
 
 

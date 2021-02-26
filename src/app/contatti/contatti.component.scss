@@ -3,7 +3,13 @@
 .contattiWrapper {
     width: $dimensioniContainer;
     margin: auto;
+    margin-bottom: 2rem;
     padding-top: 4rem;
 
+    @media screen and (max-width: 800px) {
+        width: 100%;
+        margin-bottom: 7rem;
+    }
 }
+
 

@@ -1,25 +1,47 @@
-h2 {
-    padding: 1rem 0 2rem 0;
-}
+.lista-contatti-container {
 
-@import "../../../variabili.scss";
+    h2 {
+        padding: 1rem 0 2rem 0;
+    }
 
-ul.lista-contatti {
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    color: $color1;
+    @import "../../../variabili.scss";
 
-    li {
-        width: 10rem;
-        padding: 1rem;
-        text-align: center;
+    ul.lista-contatti {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        color: $color1;
 
-        i {
-            display: block;
-            padding-bottom: .5rem;
-            font-size: 2rem;
+        li {
+            width: 25%;
+            padding: 1rem;
+            text-align: center;
+
+            i {
+                display: block;
+                padding-bottom: .5rem;
+                font-size: 2rem;
+            }
+
+            @media screen and (max-width: 1070px) {
+                p {
+                    font-size: .8rem;
+                }
+            }
+            @media screen and (max-width: 911px) {
+                width: 50%;
+            }
+    
+            @media screen and (max-width: 400px) {
+                width: 100%;
+            }
         }
+
+        
+    }
+
+    @media screen and (max-width: 800px) {
+        padding: 0 2rem;
     }
 }

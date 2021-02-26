@@ -17,7 +17,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatChipsModule,
     MatFormFieldModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
 
   exports:[
@@ -25,7 +26,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatChipsModule,
     MatFormFieldModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class SharedModule { }

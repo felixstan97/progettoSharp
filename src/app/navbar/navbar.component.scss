@@ -22,7 +22,7 @@
     text-transform: uppercase;
     letter-spacing: .1rem;
 
-    ul{
+    ul.navbar-list{
         display: flex;
         list-style: none;
         width: $dimensioniContainer;
@@ -46,6 +46,23 @@
         position:absolute;
         top: .6rem;    
         right: 2rem;
+        cursor: pointer;
+    }
+
+    ul.hamburger-list {
+        margin-top: 4rem;
+        text-align: center;
+        list-style: none;
+        background-color: inherit;
+        
+        li {
+            width: 100%;
+            border: 3px solid transparent;
+        }
+
+        &.d-none {
+            display: none;
+        }
     }
 }
 
@@ -53,7 +70,8 @@
     background-color: $color1;
     color: $color3;
 
-    ul li {
+    ul.navbar-list li,
+    ul.hamburger-list li {
    
         &:hover{
             border-bottom: 3px solid $color3;
@@ -71,7 +89,7 @@
         margin: auto;
     }
 
-    .navbarWrapper ul {
+    .navbarWrapper ul.navbar-list {
         width: 80%;
         margin-left: 10rem;
     }
@@ -90,11 +108,12 @@
         margin: auto;
     }
 
-    .navbarWrapper ul {
+    .navbarWrapper ul.navbar-list {
         display: none;
     }
 
     .navbarWrapper .hamburger-menu {
         opacity: 1;
     }
+
 }

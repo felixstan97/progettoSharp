@@ -2,10 +2,9 @@
 
     <h4>Filtra tra i corsi</h4>
 
-    <form>
+    <form (ngSubmit)="onSubmit()">
         <div class="barra-ricerca">
             <input class="ricerca" type="text" placeholder="Cerca per parola chiave...">
-
         </div>
         <div>Ricerca avanzata: <i class="fas fa-chevron-down" (click)="toggleAdvancedSearch($event)"></i></div>
         <div class="prova-grid height-zero" data-search>

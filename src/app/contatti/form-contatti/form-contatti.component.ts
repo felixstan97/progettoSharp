@@ -25,7 +25,7 @@ export class FormContattiComponent implements OnInit {
 
   doThisOnSubmit() {
     let form = this.formContatti;
-    console.log(form.value.terminiCondizioni);
+    console.log(form.value);
     this.formContatti.reset();
   }
 

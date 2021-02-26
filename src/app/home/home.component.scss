@@ -29,6 +29,7 @@
             h2 {
                 font-size: 4rem;
                 user-select: none;
+                line-height: 3.5rem;
             }
 
             h3 {
@@ -38,12 +39,31 @@
 
             }
 
-            input {
-                padding: 1rem;
-                width: 50%;
+            .cerca-corso {
+                width: 100%;
                 border-radius: .5rem;
-                border: none;
-                outline: none;
+                overflow: hidden;
+                background-color: #fff;
+                
+                input {
+                    padding: 1rem;
+                    border: none;
+                    outline: none;
+                    width: calc(100% - 70px);
+                    height: 100%;
+                }
+
+                button {
+                    width: 70px;
+                    padding: 1rem 0;
+                    height: 100%;
+                    border: none;
+                    background-color: $color2;
+                    color: $color1;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    cursor: pointer;
+                }
             }
         }
     }

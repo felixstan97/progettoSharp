@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { corsiProva } from 'src/app/Interfacce/corsiProva';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-filtri-corso',
@@ -109,6 +110,10 @@ export class FiltriCorsoComponent implements OnInit {
    }
    
 
+  }
+
+  onSubmit(){
+    console.log("ciao");
   }
 
 }

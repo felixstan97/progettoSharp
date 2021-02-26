@@ -1,14 +1,19 @@
 
-<div class="navbarWrapper" (scroll)="onWindowScroll()">
+<div class="navbarWrapper" (scroll)="onWindowScroll()" (window:resize)="onResize()">
     <div class="logo"><img src="../../assets/img/thinkSharpLogo.png" /> </div>
-    <ul>
+    <ul class="navbar-list">
         <li (click)="redirectToHome()">Home</li>
-        <!-- <li (click)="redirectToLavoro()">Offerte lavoro</li> -->
         <li (click)="redirectToCorsi()">Corsi</li>
         <li (click)="redirectToContatti()">Contattaci</li>
         <li (click)="redirectToProfilo()">Il mio profilo</li>
     </ul>
-    <span class="hamburger-menu">
+    <span class="hamburger-menu" (click)="toggleHamburgerList()">
         <i class="fas fa-bars"></i>
     </span>
+    <ul class="hamburger-list d-none">
+        <li (click)="redirectToHome()">Home</li>
+        <li (click)="redirectToCorsi()">Corsi</li>
+        <li (click)="redirectToContatti()">Contattaci</li>
+        <li (click)="redirectToProfilo()">Il mio profilo</li>
+    </ul>
 </div>
