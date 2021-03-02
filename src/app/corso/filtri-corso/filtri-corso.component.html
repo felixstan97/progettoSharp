@@ -2,9 +2,9 @@
 
     <h4>Filtra tra i corsi</h4>
 
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit($event)">
         <div class="barra-ricerca">
-            <input class="ricerca" type="text" placeholder="Cerca per parola chiave...">
+            <input name = 'ricerca' value='' class="ricerca" type="text" placeholder="Cerca per parola chiave...">
         </div>
         <div>Ricerca avanzata: <i class="fas fa-chevron-down" (click)="toggleAdvancedSearch($event)"></i></div>
         <div class="prova-grid height-zero" data-search>
@@ -37,8 +37,8 @@
 
                 <div class="durata">
                     <label>Durata (ore)</label><br />
-                    <input type="number" placeholder="Min" min="{{minDurata}}" max="{{maxDurata}}">
-                    <input type="number" placeholder="Max" min="{{minDurata}}" max="{{maxDurata}}">
+                    <input name = 'durataMin' type="number" placeholder="Min" value='{{minDurata}}' min="{{minDurata}}" max="{{maxDurata}}">
+                    <input name = 'durataMax' type="number" placeholder="Max" value='{{maxDurata}}' min="{{minDurata}}" max="{{maxDurata}}">
                 </div>
             </div>
             <div class="categorieScelte" *ngIf="categorieScelte.length > 0">
@@ -56,5 +56,6 @@
         </div>
         <div class="bottone-cerca"><button type="submit">Cerca</button></div>
     </form>
+
 </div>
 <!-- </div> -->

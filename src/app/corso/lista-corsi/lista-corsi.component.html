@@ -1,4 +1,4 @@
-<ul class="lista-corsi">
+<ul *ngIf='corsi.length != 0; else elseBlock' class="lista-corsi">
     <li *ngFor="let corso of corsi; let pari = even; let dispari = odd">
         <div class="corso" [class.bgColor2-l]="pari" [class.bgColor1]="dispari">
             <h3 (click)="mostraDettagli(corso.id)">
@@ -13,5 +13,9 @@
         </div>
     </li>
 </ul>
+
+<ng-template #elseBlock>
+    <h2>Nessun corso trovato</h2>
+</ng-template>
 
 

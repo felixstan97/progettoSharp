@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { corsiProva } from 'src/app/Interfacce/corsiProva';
-import { FormBuilder, Validators } from '@angular/forms';
+import { SharedService } from '../../shared/shared.service';
 
 @Component({
   selector: 'app-filtri-corso',
@@ -9,7 +9,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class FiltriCorsoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sharedService:SharedService) { }
 
   ngOnInit(): void {
     this.generaFiltri();
@@ -51,12 +51,6 @@ export class FiltriCorsoComponent implements OnInit {
 
 
   categorie : String[] = [];
-  durate : String[] = [
-    "< 100 ore",
-    "100 - 300 ore",
-    "400 - 600 ore",
-    "> 600 ore"
-  ];
 
   generaFiltri(){
     for (let corso of this.corsi){
@@ -76,7 +70,6 @@ export class FiltriCorsoComponent implements OnInit {
     }
     event.target.value = "*";
   }
-
 
   // ------------- Material CHIPS -------------------
   selectable = true;
@@ -112,8 +105,25 @@ export class FiltriCorsoComponent implements OnInit {
 
   }
 
-  onSubmit(){
-    console.log("ciao");
+  // paroleChiave:String[] = [];
+
+  onSubmit(event:any){
+    // let keywords = event.target.ricerca.value;
+    // let price = event.target.prezzo.value;
+    // let categories = this.categorieScelte;
+    // let cert = event.target.certificazione.value;
+    // let minDur = event.target.durataMin.value;
+    // let maxDur = event.target.durataMax.value;
+
+    let pacchetto = {
+    keywords : event.target.ricerca.value,
+    price : event.target.prezzo.value,
+    categories : this.categorieScelte,
+    cert : event.target.certificazione.value,
+    minDur : event.target.durataMin.value,
+    maxDur : event.target.durataMax.value
+    }
+    this.sharedService.search(pacchetto);
   }
 
 }

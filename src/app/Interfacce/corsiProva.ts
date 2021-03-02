@@ -7,9 +7,9 @@ export const corsiProva : Corso[] = [
         titolo : "Full Stack Developer intermedio",
         // durata in ore
         durata : 400,
-        costo : 0,
+        costo : 800,
         programma : "Insegnamento dei linguaggi Angular e PHP per studenti di livello intermedio",
-        certificazione : false,
+        certificazione : true,
         categoria : "informatica",
         numeroEdizione : 3,
         inizioEdizione : "febbraio 2021",
@@ -43,9 +43,9 @@ export const corsiProva : Corso[] = [
         titolo : "JavaScript Developer intermedio",
         // durata in ore
         durata : 100,
-        costo : 0,
+        costo : 300,
         programma : "Insegnamento dei linguaggi Angular e PHP per studenti di livello intermedio",
-        certificazione : false,
+        certificazione : true,
         categoria : "informatica",
         numeroEdizione : 3,
         inizioEdizione : "febbraio 2021",
