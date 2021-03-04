@@ -9,7 +9,7 @@ export const corsiProva : Corso[] = [
         durata : 400,
         costo : 800,
         programma : "Insegnamento dei linguaggi Angular e PHP per studenti di livello intermedio",
-        certificazione : true,
+        certificazione : false,
         categoria : "informatica",
         numeroEdizione : 3,
         inizioEdizione : "febbraio 2021",
@@ -64,7 +64,7 @@ export const corsiProva : Corso[] = [
         costo : 0,
         programma : "Insegnamento dei linguaggi Angular e PHP per studenti di livello intermedio",
         certificazione : false,
-        categoria : "cucina",
+        categoria : "informatica",
         numeroEdizione : 3,
         inizioEdizione : "febbraio 2021",
         fineEdizione : "marzo 2021",
@@ -74,4 +74,22 @@ export const corsiProva : Corso[] = [
         responsabile : "Fausto Shortino",
         lezioniSettimanali: ["lun pm4", "mer am9", "gio am10"]
     },
+    {
+        id : 5, 
+        titolo : "In cucina con C#",
+        // durata in ore
+        durata : 1000,
+        costo : 0,
+        programma : "Insegnamento dei linguaggi Angular e PHP per studenti di livello intermedio",
+        certificazione : false,
+        categoria : "cucina",
+        numeroEdizione : 3,
+        inizioEdizione : "febbraio 2021",
+        fineEdizione : "marzo 2021",
+        aula : "Aula Vienna",
+        moduli : [moduliProva[0], moduliProva[1]],
+        insegnanti : ["Mr. Bean"],
+        responsabile : "Fausto Shortino",
+        lezioniSettimanali: ["lun pm4", "mer am9", "gio am10"]
+    }
 ] 

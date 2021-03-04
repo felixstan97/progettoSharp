@@ -101,28 +101,29 @@ export class FiltriCorsoComponent implements OnInit {
       freccina.classList = "fas fa-chevron-up";
       this.advancedSearchDisplay = true;
    }
-   
-
   }
 
-  // paroleChiave:String[] = [];
 
   onSubmit(event:any){
-    // let keywords = event.target.ricerca.value;
-    // let price = event.target.prezzo.value;
-    // let categories = this.categorieScelte;
-    // let cert = event.target.certificazione.value;
-    // let minDur = event.target.durataMin.value;
-    // let maxDur = event.target.durataMax.value;
 
     let pacchetto = {
-    keywords : event.target.ricerca.value,
-    price : event.target.prezzo.value,
-    categories : this.categorieScelte,
-    cert : event.target.certificazione.value,
-    minDur : event.target.durataMin.value,
-    maxDur : event.target.durataMax.value
+      keywords : event.target.ricerca.value,
+      price : event.target.prezzo.value,
+      categories : this.categorieScelte,
+      cert : event.target.certificazione.value,
+      minDur : event.target.durataMin.value,
+      maxDur : event.target.durataMax.value
     }
+    
+    if(event.target.durataMin.value > event.target.durataMax.value){
+      event.target.durataMax.classList.add('red-border');
+      event.target.durataMin.classList.add('red-border');
+      return;
+    } else {
+      event.target.durataMax.classList.remove('red-border');
+      event.target.durataMin.classList.remove('red-border');
+    }
+  
     this.sharedService.search(pacchetto);
   }
 

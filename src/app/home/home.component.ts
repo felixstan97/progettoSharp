@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SharedService } from '../shared/shared.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router : Router) { }
+  constructor(private router : Router, 
+              private sharedService:SharedService) { }
 
   ngOnInit(): void {
   }
@@ -18,6 +20,7 @@ export class HomeComponent implements OnInit {
 
   onSubmit(){
     console.log(this.formRicercaCorso.value);
+    this.sharedService.homeSearch(this.formRicercaCorso.value);
     this.formRicercaCorso.reset();
     this.router.navigate(['corso']);
     window.scroll(0,0);

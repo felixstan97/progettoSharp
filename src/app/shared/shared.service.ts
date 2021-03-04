@@ -15,6 +15,18 @@ export class SharedService {
   }
 
   getSearch():Observable<any>{
+    console.log("-- getSerch-- ")
     return this.subject.asObservable();
   }
+
+  homeSearch(parolaChiave:string){
+    console.log("-- homeSerch-- ")
+    this.subject.next(parolaChiave);
+  }
+
+  getHomeSearch():Observable<string>{
+    console.log("-- getHomeSerch-- ")
+    return this.subject.asObservable();
+  }
+  
 }
