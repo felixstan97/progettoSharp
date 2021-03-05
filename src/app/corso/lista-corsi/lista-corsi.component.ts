@@ -15,18 +15,18 @@ export class ListaCorsiComponent implements OnInit, OnDestroy {
   subscriptionFromHome:Subscription;
 
   constructor(private router : Router, private sharedService:SharedService) { 
-    console.log("non lo so")
     this.subscription = this.sharedService.getSearch().subscribe(pacchetto =>{
       console.log("dentro la subscriptions")
       if(!pacchetto){
         console.log('Errore, il pacchetto contenente i filtri per la ricerca non è stato elaborato o ricevuto')
       } else {
-        console.log("Bravah")
+        console.log("prima subscription-")
         this.filtra(pacchetto);
       }
     })
-
+    console.log("-----")
     this.subscriptionFromHome = this.sharedService.getHomeSearch().subscribe(parolaChiave =>{
+      console.log("seconda subscription-")
       console.log("SOPRA- ");
       console.log(parolaChiave);
       console.log("SOTTO- ");
@@ -50,10 +50,9 @@ export class ListaCorsiComponent implements OnInit, OnDestroy {
     window.scroll(0,0);
   }
 
-  corsiRisultati : Corso[] = [];
-
+  
   filtra(pacchetto:any){
-
+    let corsiRisultati : Corso[] = [];
     corsiProva.forEach(element => {
 
       if(element.titolo.includes(pacchetto.keywords)){
@@ -70,38 +69,32 @@ export class ListaCorsiComponent implements OnInit, OnDestroy {
                     || pacchetto.categories.includes(element.categoria)){
                    
                     if(pacchetto.minDur <= element.durata && pacchetto.maxDur >= element.durata){
-                      this.corsiRisultati.push(element)
-                      console.log("hei")
+                      corsiRisultati.push(element)
+                      console.log("fine filtro - dentro il filtro")
                     }
-                    
                   }
-
               }
-
         }
-
-
       }
-
     });
-    this.corsi = this.corsiRisultati;
-    this.corsiRisultati = [];
+    this.corsi = corsiRisultati;
   }
 
-  filtraHome(keyWordHome:any){
+  filtraHome(keyWordHome:string){
     // this.corsi = corsiProva;
-    console.log(keyWordHome.keywords)
+    let corsiRisultati : Corso[] = [];
+    console.log("STRINGA")
+    console.log(keyWordHome)
     corsiProva.forEach(element => {
 
-        if(element.titolo.includes(keyWordHome.keywords)){
+        if(element.titolo.includes(keyWordHome)){
           console.log("Hola")
           console.log(element.titolo)
-          this.corsiRisultati.push(element);
+          corsiRisultati.push(element);
         }
       }
     );
-    this.corsi = this.corsiRisultati;
-    this.corsiRisultati = [];
+    this.corsi = corsiRisultati;
   }
 
 }
