@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { corsiProva } from 'src/app/Interfacce/corsiProva';
 import { SharedService } from '../../shared/shared.service';
 import { Subscription } from 'rxjs';
@@ -12,35 +12,29 @@ import { Corso } from 'src/app/Interfacce/Corso';
 })
 export class ListaCorsiComponent implements OnInit, OnDestroy {
   subscription:Subscription;
-  subscriptionFromHome:Subscription;
 
-  constructor(private router : Router, private sharedService:SharedService) { 
+
+  constructor(private route: ActivatedRoute, private router : Router, private sharedService:SharedService) { 
     this.subscription = this.sharedService.getSearch().subscribe(pacchetto =>{
-      console.log("dentro la subscriptions")
       if(!pacchetto){
         console.log('Errore, il pacchetto contenente i filtri per la ricerca non è stato elaborato o ricevuto')
       } else {
-        console.log("prima subscription-")
         this.filtra(pacchetto);
       }
     })
-    console.log("-----")
-    this.subscriptionFromHome = this.sharedService.getHomeSearch().subscribe(parolaChiave =>{
-      console.log("seconda subscription-")
-      console.log("SOPRA- ");
-      console.log(parolaChiave);
-      console.log("SOTTO- ");
-      this.filtraHome(parolaChiave);
-     })
   }
 
   
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
-    this.subscriptionFromHome.unsubscribe();
   }
 
+
   ngOnInit(): void {
+    let searchString = this.route.snapshot.queryParams.searchString;
+    if(searchString) {
+      this.filtraHome(searchString);
+    }
   }
 
   corsi = corsiProva;
@@ -55,7 +49,7 @@ export class ListaCorsiComponent implements OnInit, OnDestroy {
     let corsiRisultati : Corso[] = [];
     corsiProva.forEach(element => {
 
-      if(element.titolo.includes(pacchetto.keywords)){
+      if(element.titolo.toLowerCase().includes(pacchetto.keywords.toLowerCase())){
 
         if(pacchetto.cert == '*'
             || (pacchetto.cert == '0' && element.certificazione == false)
@@ -70,7 +64,6 @@ export class ListaCorsiComponent implements OnInit, OnDestroy {
                    
                     if(pacchetto.minDur <= element.durata && pacchetto.maxDur >= element.durata){
                       corsiRisultati.push(element)
-                      console.log("fine filtro - dentro il filtro")
                     }
                   }
               }
@@ -81,15 +74,11 @@ export class ListaCorsiComponent implements OnInit, OnDestroy {
   }
 
   filtraHome(keyWordHome:string){
-    // this.corsi = corsiProva;
+    this.router.navigate(['corso']);
     let corsiRisultati : Corso[] = [];
-    console.log("STRINGA")
-    console.log(keyWordHome)
     corsiProva.forEach(element => {
 
-        if(element.titolo.includes(keyWordHome)){
-          console.log("Hola")
-          console.log(element.titolo)
+        if(element.titolo.toLowerCase().includes(keyWordHome.toLowerCase())){
           corsiRisultati.push(element);
         }
       }

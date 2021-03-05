@@ -10,7 +10,6 @@ export class SharedService {
   constructor() { }
 
   private subject = new Subject<any>();
-  private subjectHome = new Subject<string>();
 
 
   search(pacchetto:object){
@@ -18,22 +17,8 @@ export class SharedService {
   }
 
   getSearch():Observable<any>{
-    console.log("-- getSerch-- ")
-    console.log(this.subject);
     return this.subject.asObservable();
   }
 
-  homeSearch(parolaChiave:string){
-    console.log("-- homeSerch-- ")
-    this.subjectHome.next(parolaChiave);
-    console.log("-- homeSerch - DOPO -- ")
-    console.log(this.subjectHome);
-  }
-
-  getHomeSearch():Observable<string>{
-    console.log("-- getHomeSerch-- ")
-    console.log(this.subjectHome);
-    return this.subjectHome.asObservable();
-  }
   
 }

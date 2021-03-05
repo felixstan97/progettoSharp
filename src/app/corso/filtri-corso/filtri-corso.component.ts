@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { corsiProva } from 'src/app/Interfacce/corsiProva';
 import { SharedService } from '../../shared/shared.service';
 
@@ -9,10 +10,16 @@ import { SharedService } from '../../shared/shared.service';
 })
 export class FiltriCorsoComponent implements OnInit {
 
-  constructor(private sharedService:SharedService) { }
+  constructor(private route: ActivatedRoute, private sharedService:SharedService) { }
 
   ngOnInit(): void {
     this.generaFiltri();
+    let searchString = this.route.snapshot.queryParams.searchString;
+    if(searchString) {
+      let input = document.querySelector(".barra-ricerca input");
+
+      // input.value() = searchString;
+    }
   }
 
   corsi = corsiProva;

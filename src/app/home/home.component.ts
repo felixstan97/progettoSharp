@@ -19,10 +19,8 @@ export class HomeComponent implements OnInit {
   formRicercaCorso = new FormControl('');
 
   onSubmit(){
-    console.log(this.formRicercaCorso.value);
-    this.sharedService.homeSearch(this.formRicercaCorso.value);
-    this.formRicercaCorso.reset();
-    this.router.navigate(['corso']);
+    let string = this.formRicercaCorso.value;
+    this.router.navigate(['corso'], {queryParams: {searchString : string}});
     window.scroll(0,0);
   }
 
