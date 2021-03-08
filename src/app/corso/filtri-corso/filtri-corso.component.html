@@ -4,7 +4,7 @@
 
     <form (ngSubmit)="onSubmit($event)">
         <div class="barra-ricerca">
-            <input name = 'ricerca' value='' class="ricerca" type="text" placeholder="Cerca per parola chiave...">
+            <input name = 'ricerca' value=''  class="ricerca" type="text" value="{{rice}}" placeholder="Cerca per parola chiave...">
         </div>
         <div>Ricerca avanzata: <i class="fas fa-chevron-down" (click)="toggleAdvancedSearch($event)"></i></div>
         <div class="prova-grid height-zero" data-search>

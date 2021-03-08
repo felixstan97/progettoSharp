@@ -12,14 +12,22 @@ export class FiltriCorsoComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private sharedService:SharedService) { }
 
+  searchString ="";
+  rice="";
+  
   ngOnInit(): void {
     this.generaFiltri();
-    let searchString = this.route.snapshot.queryParams.searchString;
-    if(searchString) {
-      let input = document.querySelector(".barra-ricerca input");
-
-      // input.value() = searchString;
+    let r = this.route.snapshot.queryParams.searchString;
+    if(r){
+      this.rice = r;
     }
+    // this.searchString = this.route.snapshot.queryParams.searchString;
+    // this.rice = this.searchString;
+    // if(searchString) {
+    //   let input = document.querySelector(".barra-ricerca input");
+
+    //   // input.value() = searchString;
+    // }
   }
 
   corsi = corsiProva;
@@ -112,7 +120,7 @@ export class FiltriCorsoComponent implements OnInit {
 
 
   onSubmit(event:any){
-
+    
     let pacchetto = {
       keywords : event.target.ricerca.value,
       price : event.target.prezzo.value,
@@ -121,6 +129,8 @@ export class FiltriCorsoComponent implements OnInit {
       minDur : event.target.durataMin.value,
       maxDur : event.target.durataMax.value
     }
+   
+   
     
     if(event.target.durataMin.value > event.target.durataMax.value){
       event.target.durataMax.classList.add('red-border');
