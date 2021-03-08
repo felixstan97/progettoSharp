@@ -16,10 +16,6 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path:"lavoro",
-    loadChildren: () => import('./lavoro/lavoro.module').then(m => m.LavoroModule)
-  },
-  {
     path:"corso",
     loadChildren: () => import('./corso/corso.module').then(m => m.CorsoModule)
   },
@@ -30,6 +26,10 @@ const routes: Routes = [
   {
     path:"profilo",
     loadChildren: () => import('./profilo/profilo.module').then(m => m.ProfiloModule)
+  },
+  {
+    path:"iscriviti",
+    loadChildren: () => import('./registration/registration.module').then(m => m.RegistrationModule)
   },
   {
     path:"**",

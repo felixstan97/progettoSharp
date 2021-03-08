@@ -38,6 +38,11 @@ export class NavbarComponent implements OnInit {
     window.scroll(0,0);
   }
 
+  redirectToRegistration(){
+    this.router.navigate(['iscriviti']);
+    window.scroll(0,0);
+  }
+
 
   ngOnInit(): void {
   }

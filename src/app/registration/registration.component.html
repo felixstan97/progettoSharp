@@ -1,0 +1,53 @@
+<div class="registrationWrapper">
+    <h2>Iscriviti</h2>
+    <form [formGroup]="formRegistration" (ngSubmit)="doThisOnSubmit()">
+        <div class="personalData">
+            <h3>Dati personali</h3>
+            <input type="text" placeholder="* Nome..." formControlName="nome" required>
+            <input type="text" placeholder="* Cognome..." formControlName="cognome" required>
+            <input type="text" placeholder="* Tel" formControlName="telefono" required>
+            <input type="mail" placeholder="* E-mail..." formControlName="email" required>
+            <input type="text" placeholder="* Codice fiscale..." formControlName="CF" required>
+            <select formControlName="gender">
+                <option value="">--Genere--</option>
+                <option value="F">F</option>
+                <option value="M">M</option>
+            </select>
+            <input type="text" placeholder="* Luogo di nascita..." formControlName="luogoNascita" required>
+            <input type="date" formControlName="dataNascita" value="{{maxDate}}" min="{{minDate}}" max="{{maxDate}}">
+        </div>
+        <div class="address">
+            <h3>Indirizzo</h3>
+            <input type="text" placeholder="* Via/Strada..." formControlName="indirizzo">
+            <input type="text" placeholder="* Città..." formControlName="citta">
+            <input type="text" placeholder="Provincia..." formControlName="provincia">
+            <input type="text" placeholder="Regione..." formControlName="regione">
+            <input type="text" placeholder="* Stato..." formControlName="stato">
+        </div>
+        <div class="competences">
+            <h3>Competenze</h3>
+            <div class="competenza" *ngFor="let comp of comps.controls; let i = index" formArrayName="competenze">
+                <div [formGroupName]="i">
+                    <select formControlName="abilita">
+                        <option value="">--Abilità--</option>
+                        <option *ngFor="let ability of abilities" [value]="ability" [innerText]="ability"></option>
+                    </select>
+                    <select formControlName="livello">
+                        <option value="">-- Livello --</option>
+                        <option value="ZERO">ZERO</option>
+                        <option value="BASE">BASE</option>
+                        <option value="INTERMEDIO">INTERMEDIO</option>
+                        <option value="ESPERTO">ESPERTO</option>
+                        <option value="GURU">GURU</option>
+                    </select>
+                    <button type="button" class="btn btn-danger btn-xs" 
+                    (click)="deleteComp(i)"><span class="glyphicon glyphicon-remove"></span>
+                    Delete
+                    </button>
+                </div>
+            </div>
+            <button type="button" (click)="addCompetence()">Aggiungi competenza</button>
+        </div>
+        <button type="submit">Invia</button>
+    </form>
+</div>
