@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { corsiProva } from '../Interfacce/corsiProva';
-import { Corso } from '../Interfacce/Corso';
+// import { corsiProva } from '../Interfacce/corsiProva';
+import { Corso } from '../Interfacce/corso';
 
 @Component({
   selector: 'app-dettagli-corso',
@@ -20,7 +20,7 @@ export class DettagliCorsoComponent implements OnInit {
   
   getCorso(): void {
     const id = +this.route.snapshot.paramMap.get('id')!;
-    this.corso = corsiProva[id-1];
+    // this.corso = corsiProva[id-1];
     // this.heroService.getHero(id)
     //   .subscribe(hero => this.hero = hero);
   }

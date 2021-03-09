@@ -3,13 +3,13 @@
         <div class="corso" [class.bgColor2-l]="pari" [class.bgColor1]="dispari">
             <h3 (click)="mostraDettagli(corso.id)">
                 <!-- <a routerLink="corso/dettagli/{{corso.id}}"> -->
-                {{corso.titolo}}
+                {{corso.name}}
             </h3>
             <div class="duration">
                 <!-- <i class="fas fa-map-marker-alt"></i> -->
-                <h5>{{corso.durata}} ore</h5>
+                <h5>{{corso.duration}} ore</h5>
             </div>
-            <p>{{corso.programma}}</p>
+            <p>{{corso.program}}</p>
         </div>
     </li>
 </ul>
