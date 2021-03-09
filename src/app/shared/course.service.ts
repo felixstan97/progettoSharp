@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { Corso } from '../Interfacce/corso';
+import { Corso } from '../Interfacce/Corso';
 import { tap, catchError } from 'rxjs/operators'; 
+import { Edizione } from '../Interfacce/edizione';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,13 @@ export class CourseService {
 
   public getCourseById(id:number): Observable<Corso>{
     return this.http.get<Corso>(`${this.courseUrl}/${id}`)
+                          .pipe(tap(data => console.log(JSON.stringify(data))),
+                          catchError(this.handleError)
+                          );
+  }
+
+  public getEditionsByCourseId(id:number): Observable<Edizione>{
+    return this.http.get<Edizione>(`${this.courseUrl}/editions/${id}`)
                           .pipe(tap(data => console.log(JSON.stringify(data))),
                           catchError(this.handleError)
                           );
