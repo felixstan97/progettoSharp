@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { corsiProva } from 'src/app/Interfacce/corsiProva';
+import { Corso } from 'src/app/Interfacce/corso';
+// import { corsiProva } from 'src/app/Interfacce/corsiProva';
 import { SharedService } from '../../shared/shared.service';
 
 @Component({
@@ -30,7 +31,7 @@ export class FiltriCorsoComponent implements OnInit {
     // }
   }
 
-  corsi = corsiProva;
+  corsi:Corso[] = [];
 
   minDurata = this.findMinDuration();
 
@@ -38,10 +39,10 @@ export class FiltriCorsoComponent implements OnInit {
     if(this.corsi.length == 0) {
       return 0;
     } else { 
-      let duration = this.corsi[0].durata;
+      let duration = this.corsi[0].duration;
       this.corsi.forEach(corso=>{
-        if(corso.durata < duration) {
-          duration = corso.durata;
+        if(corso.duration < duration) {
+          duration = corso.duration;
         }
       })
       return duration;
@@ -54,10 +55,10 @@ export class FiltriCorsoComponent implements OnInit {
     if(this.corsi.length == 0) {
       return 0;
     } else { 
-      let duration = this.corsi[0].durata;
+      let duration = this.corsi[0].duration;
       this.corsi.forEach(corso=>{
-        if(corso.durata > duration) {
-          duration = corso.durata;
+        if(corso.duration > duration) {
+          duration = corso.duration;
         }
       })
       return duration;
@@ -69,8 +70,8 @@ export class FiltriCorsoComponent implements OnInit {
 
   generaFiltri(){
     for (let corso of this.corsi){
-      if (!this.categorie.includes(corso.categoria)){
-        this.categorie.push(corso.categoria);
+      if (!this.categorie.includes(corso.category)){
+        this.categorie.push(corso.category);
       }
     }
     this.categorie.sort();

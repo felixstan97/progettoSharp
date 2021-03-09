@@ -1,4 +1,4 @@
-import { Utente } from './Utente';
+import { Utente } from './utente';
 
 export const utenteProva : Utente = {
     nome : "Gino",

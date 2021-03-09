@@ -1,18 +1,18 @@
 <div class="dettagliCorsoWrapper">
     <div class="dettagliContainer">
-        <h2>{{corso.titolo}}</h2>
+        <h2>{{corso.name}}</h2>
         <div class="dettagli-main-content">
             <div class="left-side">
                 <div class="descrizione">
                     <h4>Descrizione</h4>
                     <p>
-                        {{corso.programma}}
+                        {{corso.program}}
                     </p>
                     <ul>
                         <li>
-                            Durata: {{corso.durata}}
+                            Durata: {{corso.duration}}
                         </li>
-                        <li *ngIf="corso.certificazione; then certificazione else no_certificazione"></li>
+                        <li *ngIf="corso.certification; then certificazione else no_certificazione"></li>
                         <ng-template #certificazione>
                             <li>
                                 Certificazione finale: sì
@@ -25,16 +25,16 @@
                         </ng-template>
                     </ul>
                 </div>
-                <div class="programma">
+                <!-- <div class="programma">
                     <h4>Programma</h4>
                     <ul>
                         <li *ngFor="let modulo of corso.moduli">
                             {{modulo.nome}}
                         </li>
                     </ul>
-                </div>
+                </div> -->
             </div>
-            <div class="right-side">
+            <!-- <div class="right-side">
                 <h4>Dettagli corso</h4>
                 <ul>
                     <li>Lezioni settimanali
@@ -62,9 +62,9 @@
                         </ul>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
-        <div class="edizioni">
+        <!-- <div class="edizioni">
             <div class="edizione-corrente">
                 <h4>Edizione corrente</h4>
                 <p>
@@ -78,6 +78,6 @@
                     <li>Mese anno - iscrizioni non aperte</li>
                 </ul>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
