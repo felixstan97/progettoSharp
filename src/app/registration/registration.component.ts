@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormArray } from '@angular/forms';
 import { arrayAbilita } from '../Interfacce/arrayAbilita';
+import { regioniEnum, regioniEnumFormattate } from '../Interfacce/regioni';
 
 @Component({
   selector: 'app-registration',
@@ -52,6 +53,8 @@ export class RegistrationComponent implements OnInit {
   }
 
   abilities = arrayAbilita;
+  regioni = regioniEnum;
+  regioniFormattate = regioniEnumFormattate;
 
   divCompetenze = document.querySelectorAll(".competenza");
 

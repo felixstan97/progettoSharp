@@ -2,20 +2,20 @@
 <div class="navbarWrapper" (scroll)="onWindowScroll()" (window:resize)="onResize()">
     <div class="logo"><img src="../../assets/img/thinkSharpLogo.png" /> </div>
     <ul class="navbar-list">
-        <li (click)="redirectToHome()">Home</li>
-        <li (click)="redirectToCorsi()">Corsi</li>
-        <li (click)="redirectToContatti()">Contattaci</li>
-        <li (click)="redirectToProfilo()">Il mio profilo</li>
-        <li (click)="redirectToRegistration()">Iscriviti</li>
+        <li (click)="redirectTo('home')">Home</li>
+        <li (click)="redirectTo('corso')">Corsi</li>
+        <li (click)="redirectTo('contatti')">Contattaci</li>
+        <li (click)="redirectTo('profilo')">Il mio profilo</li>
+        <li (click)="redirectTo('iscriviti')">Iscriviti</li>
     </ul>
     <span class="hamburger-menu" (click)="toggleHamburgerList()">
         <i class="fas fa-bars"></i>
     </span>
     <ul class="hamburger-list d-none">
-        <li (click)="redirectToHome()">Home</li>
-        <li (click)="redirectToCorsi()">Corsi</li>
-        <li (click)="redirectToContatti()">Contattaci</li>
-        <li (click)="redirectToProfilo()">Il mio profilo</li>
-        <li (click)="redirectToRegistration()">Iscriviti</li>
+        <li (click)="redirectHamTo('home')">Home</li>
+        <li (click)="redirectHamTo('corso')">Corsi</li>
+        <li (click)="redirectHamTo('contatti')">Contattaci</li>
+        <li (click)="redirectHamTo('profilo')">Il mio profilo</li>
+        <li (click)="redirectHamTo('iscriviti')">Iscriviti</li>
     </ul>
 </div>

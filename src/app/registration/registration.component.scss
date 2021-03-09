@@ -6,4 +6,158 @@
     margin-bottom: 2rem;
     padding-top: 4rem;
     padding-bottom: 1rem;
+
+    form {
+        
+        .title-container {
+            padding-top: 1rem;
+            padding-bottom: .5rem;
+            display: flex;
+            align-items: center;
+            
+            h3 {
+                display: inline-block;
+                padding-right: 1rem;
+            }
+            
+            hr {
+                border: 1px solid #000;
+                flex-grow: 1;
+            }
+        }
+
+        .formSection {
+            display: flex;
+            flex-wrap: wrap;
+            
+            .title-container {
+                width: 100%;
+            }
+
+            h3 {
+                margin: 0;
+                font-weight: bold;
+            }
+            
+            > div:not(.title-container) {
+                width: 50%;
+                padding-bottom: .5rem;
+                
+                &:nth-child(even) {                    
+                    padding-right: .5rem;
+                }
+
+                &:nth-child(odd) {                    
+                    padding-left: .5rem;
+                }
+
+                input, select {
+                    width: 100%;
+                    padding: .5rem;
+                    box-shadow: none;
+                    outline: none;
+                }
+     
+                @media screen and (max-width: 715px){
+                    width: 100%;
+                    
+                    &:nth-child(even) {                    
+                        padding-right: 0;
+                    }
+    
+                    &:nth-child(odd) {                    
+                        padding-left: 0;
+                    }
+                }
+
+            }
+        }
+
+        .competences {
+            padding-bottom: 2rem;
+
+            h3 {
+                margin: 0;
+                font-weight: bold;
+            }
+
+            #addComp {
+                cursor: pointer;
+                display: inline-block;
+                color: $color1;
+                transition: color .4s ease;
+                margin-top: .5rem;
+                
+                i {
+                    padding: .3rem;
+                }
+
+                &:hover {
+                    color: $color3;
+                }
+                
+            }
+
+            .competence {
+                padding-top: .5rem;
+
+                select {
+                    padding: .5rem;
+
+                    &:first-child {
+                        margin-right: 1rem;
+                    }
+                }
+
+                .deleteComp {
+                    margin-left: 1rem;
+                    background-color: red;
+                    color: $color1;
+                    border-radius: 7px;
+                    padding: .5rem;
+                    cursor: pointer;
+                    font-size: .8rem;
+                    transition: color .4s ease;
+
+                    i {
+                        padding-right: .3rem;
+                    }
+
+                    &:hover {
+                        color: #fff;
+                    }
+
+                    @media screen and (max-width: 550px) {
+
+                        span {
+                            display: none;
+                        }
+
+                        i {
+                            padding-right: 0;
+                        }
+                    }
+                }
+            }
+           
+        }
+
+        .submit-container {
+            text-align: center;
+
+            button {
+                background-color: $color3;
+                border: none;
+                box-shadow: none;
+                padding: .3rem 2rem;
+                letter-spacing: .2rem;
+            }
+        }
+
+
+    }
+
+    @media screen and (max-width: 550px) {
+        width: 90%;
+    }
 }

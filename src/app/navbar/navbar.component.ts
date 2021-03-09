@@ -13,34 +13,17 @@ export class NavbarComponent implements OnInit {
   constructor(private router : Router) { 
    
   }
-  
-  redirectToHome(){
-    this.router.navigate(['home']);
-    window.scroll(0,0);
-  }
-  
-  redirectToLavoro(){
-    this.router.navigate(['lavoro']);
-    window.scroll(0,0);
-  }
-  redirectToCorsi(){
-    this.router.navigate(['corso']);
+
+
+  redirectTo(str:string) {
+    this.router.navigate([str]);
     window.scroll(0,0);
   }
 
-  redirectToContatti(){
-    this.router.navigate(['contatti']);
+  redirectHamTo(str:string) {
+    this.router.navigate([str]);
     window.scroll(0,0);
-  }
-
-  redirectToProfilo(){
-    this.router.navigate(['profilo']);
-    window.scroll(0,0);
-  }
-
-  redirectToRegistration(){
-    this.router.navigate(['iscriviti']);
-    window.scroll(0,0);
+    this.toggleHamburgerList();
   }
 
 

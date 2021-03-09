@@ -7,7 +7,7 @@ import { tap, catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class CoreServiceService {
+export class CourseService {
 
   courseUrl = 'http://localhost:8080/api/course/';
 

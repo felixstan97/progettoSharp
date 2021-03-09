@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SharedService } from '../../shared/shared.service';
 import { Subscription } from 'rxjs';
 import { Corso } from 'src/app/Interfacce/corso';
-import { CoreServiceService } from '../../shared/course-service.service'
+import { CourseService } from '../../shared/course.service'
 
 @Component({
   selector: 'app-lista-corsi',
@@ -18,7 +18,7 @@ export class ListaCorsiComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute, private router : Router,
                 private sharedService:SharedService,
-                private courseService:CoreServiceService) { 
+                private courseService:CourseService) { 
     this.subscription = this.sharedService.getSearch().subscribe(pacchetto =>{
       if(!pacchetto){
         console.log('Errore, il pacchetto contenente i filtri per la ricerca non è stato elaborato o ricevuto')
