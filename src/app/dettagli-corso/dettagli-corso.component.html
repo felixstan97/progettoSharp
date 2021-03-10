@@ -1,8 +1,10 @@
 <div class="dettagliCorsoWrapper">
-    <div class="dettagliContainer">
+    <div *ngIf="corso" class="dettagliContainer">
         <h2>{{corso.name}}</h2>
         <div class="dettagli-main-content">
             <div class="left-side">
+
+
                 <div class="descrizione">
                     <h4>Descrizione</h4>
                     <p>
@@ -12,7 +14,7 @@
                         <li>
                             Durata: {{corso.duration}}
                         </li>
-                        <li *ngIf="corso.certification; then certificazione else no_certificazione"></li>
+                        <!-- <li *ngIf="corso.certification; then certificazione else no_certificazione"></li>
                         <ng-template #certificazione>
                             <li>
                                 Certificazione finale: sì
@@ -22,17 +24,24 @@
                             <li>
                                 Certificazione finale: no
                             </li>
-                        </ng-template>
+                        </ng-template> -->
                     </ul>
                 </div>
-                <!-- <div class="programma">
+
+
+                <div class="programma"  >
                     <h4>Programma</h4>
-                    <ul>
-                        <li *ngFor="let modulo of corso.moduli">
-                            {{modulo.nome}}
+                    <ul *ngIf="edizioni">
+                        <li *ngFor="let edizione of edizioni">
+                            {{edizione.id}}
+                        </li>
+                        <li>
+                            
                         </li>
                     </ul>
-                </div> -->
+                </div>
+
+
             </div>
             <!-- <div class="right-side">
                 <h4>Dettagli corso</h4>

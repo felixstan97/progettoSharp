@@ -1,32 +1,80 @@
 <div class="registrationWrapper">
     <h2>Iscriviti</h2>
     <form [formGroup]="formRegistration" (ngSubmit)="doThisOnSubmit()">
-        <div class="personalData">
-            <h3>Dati personali</h3>
-            <input type="text" placeholder="* Nome..." formControlName="nome" required>
-            <input type="text" placeholder="* Cognome..." formControlName="cognome" required>
-            <input type="text" placeholder="* Tel" formControlName="telefono" required>
-            <input type="mail" placeholder="* E-mail..." formControlName="email" required>
-            <input type="text" placeholder="* Codice fiscale..." formControlName="CF" required>
-            <select formControlName="gender">
-                <option value="">--Genere--</option>
-                <option value="F">F</option>
-                <option value="M">M</option>
-            </select>
-            <input type="text" placeholder="* Luogo di nascita..." formControlName="luogoNascita" required>
-            <input type="date" formControlName="dataNascita" value="{{maxDate}}" min="{{minDate}}" max="{{maxDate}}">
+        <div class="personalData formSection">
+            <div class="title-container">
+                <h3>Dati personali</h3>
+                <hr>
+            </div>
+            <div>
+                <label for="nome">* Nome</label>
+                <input id="nome" type="text" placeholder="Nome..." formControlName="nome" required>
+            </div>
+            <div>
+                <label for="cognome">* Cognome</label>
+                <input id="cognome" type="text" placeholder="Cognome..." formControlName="cognome" required>
+            </div>
+            <div>
+                <label for="telefono">* Nr. tel</label>
+                <input id="telefono" type="text" placeholder="Tel" formControlName="telefono" required>
+            </div>
+            <div>
+                <label for="mail">* Email</label>
+                <input id="mail" type="mail" placeholder="E-mail..." formControlName="email" required>
+            </div>
+            <div>
+                <label for="cf">* Codice fiscale</label>
+                <input id="cf" type="text" placeholder="Codice fiscale..." formControlName="CF" required>
+            </div>
+            <div>    
+                <label for="genere">* Genere</label>
+                <select id="genere" formControlName="gender">
+                    <option value="">--Genere--</option>
+                    <option value="F">F</option>
+                    <option value="M">M</option>
+                </select>
+            </div>
+            <div>
+                <label for="luogo-nascita">* Luogo di nascita</label>
+                <input id="luogo-nascita" type="text" placeholder="Luogo di nascita..." formControlName="luogoNascita" required>
+            </div>
+            <div>
+                <label for="data-nascita">* Data di nascita</label>
+                <input id="data-nascita" type="date" formControlName="dataNascita" value="{{maxDate}}" min="{{minDate}}" max="{{maxDate}}">
+            </div>
         </div>
-        <div class="address">
-            <h3>Indirizzo</h3>
-            <input type="text" placeholder="* Via/Strada..." formControlName="indirizzo">
-            <input type="text" placeholder="* Città..." formControlName="citta">
-            <input type="text" placeholder="Provincia..." formControlName="provincia">
-            <input type="text" placeholder="Regione..." formControlName="regione">
-            <input type="text" placeholder="* Stato..." formControlName="stato">
+        <div class="address formSection">
+            <div class="title-container">
+                <h3>Domicilio</h3>
+                <hr>
+            </div>
+            <div>
+                <label for="indirizzo">* Indirizzo</label>
+                <input id="indirizzo" type="text" placeholder="Via/Strada..." formControlName="indirizzo">
+            </div>
+            <div>
+                <label for="citta">* Città</label>    
+                <input id="citta" type="text" placeholder="Città..." formControlName="citta">
+            </div>
+            <div>
+                <label for="provincia">Provincia</label>
+                <input id="provincia" type="text" placeholder="Provincia..." formControlName="provincia">
+            </div>
+            <div>
+                <label for="regione">Regione</label>
+                <select formControlName="regione" id="regione">
+                    <option value="">--Regione--</option>
+                    <option *ngFor="let regione of regioni; index as i"
+                    [value]="regione" [innerText]="regioniFormattate[i]"></option>
+                </select>
+            </div>
         </div>
         <div class="competences">
-            <h3>Competenze</h3>
-            <div class="competenza" *ngFor="let comp of comps.controls; let i = index" formArrayName="competenze">
+            <div class="title-container">
+                <h3>Competenze</h3>
+                <hr>
+            </div>
+            <div class="competence" *ngFor="let comp of comps.controls; let i = index" formArrayName="competenze">
                 <div [formGroupName]="i">
                     <select formControlName="abilita">
                         <option value="">--Abilità--</option>
@@ -40,14 +88,19 @@
                         <option value="ESPERTO">ESPERTO</option>
                         <option value="GURU">GURU</option>
                     </select>
-                    <button type="button" class="btn btn-danger btn-xs" 
-                    (click)="deleteComp(i)"><span class="glyphicon glyphicon-remove"></span>
-                    Delete
-                    </button>
+                    <span class="deleteComp">
+                        <i type="button" class="fas fa-trash-alt" (click)="deleteComp(i)"></i>
+                        <span>Elimina</span>
+                    </span>
                 </div>
             </div>
-            <button type="button" (click)="addCompetence()">Aggiungi competenza</button>
+            <div id="addComp" (click)="addCompetence()">
+                <i class="fas fa-plus-circle"></i>
+                <span>Aggiungi</span>
+            </div>
         </div>
-        <button type="submit">Invia</button>
+        <div class="submit-container">
+            <button class="btn btn-primary" type="submit" [disabled]="!formRegistration.valid">Invia</button>
+        </div>
     </form>
 </div>

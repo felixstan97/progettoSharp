@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Corso } from 'src/app/Interfacce/corso';
+import { Corso } from 'src/app/Interfacce/Corso';
 // import { corsiProva } from 'src/app/Interfacce/corsiProva';
 import { SharedService } from '../../shared/shared.service';
 

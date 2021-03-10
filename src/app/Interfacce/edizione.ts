@@ -6,6 +6,5 @@ export class Edizione{
     classroomId : number = 0;
     description : string = '';
     tutorId : number = 0;
-    tutorName : string = '';
     courseId : number = 0;
 }

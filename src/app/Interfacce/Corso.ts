@@ -1,5 +1,4 @@
 import { Edizione } from './edizione';
-import {Modulo} from './modulo';
 
 export class Corso {
     id : number = 0;
