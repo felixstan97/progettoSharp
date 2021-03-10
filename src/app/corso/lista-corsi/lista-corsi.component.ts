@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 // import { corsiProva } from 'src/app/Interfacce/corsiProva';
 import { SharedService } from '../../shared/shared.service';
 import { Subscription } from 'rxjs';
-import { Corso } from 'src/app/Interfacce/corso';
+import { Corso } from 'src/app/Interfacce/Corso';
 import { CoreServiceService } from '../../shared/course-service.service'
 
 @Component({

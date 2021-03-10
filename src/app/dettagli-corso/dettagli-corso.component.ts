@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 // import { corsiProva } from '../Interfacce/corsiProva';
-import { Corso } from '../Interfacce/corso';
+import { Corso } from '../Interfacce/Corso';
 
 @Component({
   selector: 'app-dettagli-corso',
