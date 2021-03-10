@@ -1,7 +1,7 @@
-export interface Modulo {
-    nome: String,
-    // insegnante: String,
-    // numerOre: number,
-    // argomento: String,
-    // lezioni: String[]
+export class Modulo {
+    id: number = 0;
+    name: String = '';
+    description: String = '';
+    teacherName: String = '';
+    duration: number = 0;    
 }

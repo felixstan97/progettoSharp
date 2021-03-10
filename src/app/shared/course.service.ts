@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { Corso } from '../Interfacce/Corso';
 import { tap, catchError } from 'rxjs/operators'; 
 import { Edizione } from '../Interfacce/edizione';
+import { Modulo } from '../Interfacce/modulo';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,20 @@ export class CourseService {
                           .pipe(tap(data => console.log(JSON.stringify(data))),
                           catchError(this.handleError)
                           );
+  }
+
+  public getModuleByEditionId(id:number): Observable<Modulo>{
+    console.log('----id---');
+    console.log(id);
+    let temp = this.http.get<Modulo>(`${this.courseUrl}/modules/${id}`)
+    .pipe(tap(data => console.log(JSON.stringify(data))),
+    catchError(this.handleError));
+    console.log('---temp--');
+    console.log(temp);
+    return temp;   
+    // return this.http.get<Modulo>(`${this.courseUrl}/modules/${id}`)
+    //                       .pipe(tap(data => console.log(JSON.stringify(data))),
+    //                       catchError(this.handleError));   
   }
 
   handleError(err:any){

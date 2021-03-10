@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 // import { corsiProva } from '../Interfacce/corsiProva';
 import { Corso } from '../Interfacce/Corso';
 import { Edizione } from '../Interfacce/edizione';
+import { Modulo } from '../Interfacce/modulo';
 import { CourseService } from '../shared/course.service';
 import { SharedService } from '../shared/shared.service';
 
@@ -23,6 +24,7 @@ export class DettagliCorsoComponent implements OnInit {
 
   corso! : Corso;
   edizioni!: Edizione[];
+  moduli!: Modulo[];
   
   getCorso(): void {
     const id = +this.route.snapshot.paramMap.get('id')!;
@@ -39,12 +41,35 @@ export class DettagliCorsoComponent implements OnInit {
     })
     
     console.log(this.corso);
+    console.log('---edizioni---');
+    console.log(this.edizioni);
+    console.log('---moduli---');
+    console.log(this.moduli);
+
   }
 
   fillEdizioni(cs:any){
+    let tempEd: Edizione[] = [];
       cs.forEach((element: Edizione) => {
-        this.edizioni.push(element);
+        tempEd.push(element);
       });
+      this.edizioni = tempEd;
   }
+
+  fillModuli(cs:any){
+    let tempMod: Modulo[]= [];
+    cs.forEach((element: Modulo) => {
+      tempMod.push(element);
+    });
+    this.moduli = tempMod;
+}
+
+  viewEditionDetails(id: number){
+    // let editionTemp = this.edizioni[id];
+    this.courseService.getModuleByEditionId(id).subscribe({
+      next: cs => {this.fillModuli(cs)},
+      error: err => console.log(err)
+    });
+   }
 
 }
