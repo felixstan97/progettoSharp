@@ -61,15 +61,26 @@ export class DettagliCorsoComponent implements OnInit {
     cs.forEach((element: Modulo) => {
       tempMod.push(element);
     });
-    this.moduli = tempMod;
+    tempMod.forEach(modulo => {
+      this.edizioni.forEach((edizione,index) =>{
+        if(edizione.id == modulo.editionId){
+          console.log(modulo);
+          this.edizioni[index].modules.push(modulo);
+          console.log('if');
+        }
+      })
+    })
+    // this.edizioni.m = tempMod;
+    // this.moduli = tempMod;
 }
 
-  viewEditionDetails(id: number){
+  viewEditionDetails(id: number,i: number){
     // let editionTemp = this.edizioni[id];
     this.courseService.getModuleByEditionId(id).subscribe({
       next: cs => {this.fillModuli(cs)},
       error: err => console.log(err)
     });
+    let element = document.getElementsByClassName("moduli");
    }
 
 }

@@ -1,4 +1,5 @@
 import { LocalDate } from "@js-joda/core";
+import { Modulo } from "./modulo";
 
 export class Edizione{
     id : number = 0;
@@ -7,4 +8,6 @@ export class Edizione{
     description : string = '';
     tutorId : number = 0;
     courseId : number = 0;
+    modules: Modulo[] = [];
+    prova: string = 'prova';
 }

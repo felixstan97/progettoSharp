@@ -3,5 +3,6 @@ export class Modulo {
     name: String = '';
     description: String = '';
     teacherName: String = '';
-    duration: number = 0;    
+    duration: number = 0;
+    editionId: number = 0;    
 }

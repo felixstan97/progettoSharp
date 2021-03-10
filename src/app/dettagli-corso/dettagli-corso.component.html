@@ -6,7 +6,7 @@
 
 
                 <div class="descrizione">
-                    <h4>Descrizione</h4>
+                    <h4>Programma</h4>
                     <p>
                         {{corso.program}}
                     </p>
@@ -18,26 +18,64 @@
                 </div>
 
 
+
                 <div class="programma">
-                    <h4>Programma</h4>
-                    <ul *ngIf="edizioni">
-                        <li *ngFor="let edizione of edizioni">
-                            <button (click)="viewEditionDetails({{edizione.id}})">Vedi dettagli</button>
-                            {{edizione.id}}
-                        </li>
-                        <li>
+                    <h4>Edizioni</h4>
+                    <div *ngIf="edizioni">
+                        <div *ngFor="let edizione of edizioni; let i = index">
+                            {{edizione.startDate}}
+                            <i class="fas fa-info-circle" (click)="viewEditionDetails(edizione.id,i)"></i>
                             
-                        </li>
-                    </ul>
-                    <ul *ngIf="moduli">
-                        <li *ngFor="let modulo of moduli">
-                           {{modulo.id}}
-                        </li>
-                    </ul>
+                            <div *ngIf="corso.certification; then certificazione else no_certificazione"></div>
+                            <ng-template #certificazione>
+                                SI
+                            </ng-template>
+                            <ng-template #no_certificazione>
+                                No
+                            </ng-template>
+
+                            <div class="moduli" *ngIf="edizione.modules">
+                                <div *ngFor="let modulo of edizione.modules">
+                                    {{modulo.id}}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
 
             </div>
+
+            <div class="right-side">
+                <h4>Dettagli corso</h4>
+                <ul>
+                    <li>Durata:
+                        <ul>
+                            <li>
+                                {{corso.duration}}
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Prezzo:
+                        <ul>
+                            <li>{{corso.price}}</li>
+                        </ul>
+                    </li>
+                    <li>Certificazione:
+                        <ul>
+                            <li *ngIf="corso.certification; then certificazione else no_certificazione"></li>
+                            <ng-template #certificazione>
+                                SI
+                            </ng-template>
+                            <ng-template #no_certificazione>
+                                No
+                            </ng-template>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
         </div>
     </div>
 </div>
