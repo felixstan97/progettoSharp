@@ -22,6 +22,7 @@ export class DettagliCorsoComponent implements OnInit {
 
   }
 
+  
   corso! : Corso;
   edizioni!: Edizione[];
   moduli!: Modulo[];
