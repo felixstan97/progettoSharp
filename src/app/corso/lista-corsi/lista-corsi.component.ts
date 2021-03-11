@@ -51,7 +51,29 @@ export class ListaCorsiComponent implements OnInit, OnDestroy {
   }
   
   filtra(pacchetto:any){
+    
+  }
+
+
+  filtraHome(keyWordHome:string){
+    // this.router.navigate(['corso']);
     // let corsiRisultati : Corso[] = [];
+    // corsiProva.forEach(element => {
+
+    //     if(element.name.toLowerCase().includes(keyWordHome.toLowerCase())){
+    //       corsiRisultati.push(element);
+    //     }
+    //   }
+    // );
+    // this.corsi = corsiRisultati;
+  }
+
+}
+
+
+// ESEMPIO DI FILTRAGGIO FRONTEND
+
+// let corsiRisultati : Corso[] = [];
     // corsiProva.forEach(element => {
 
     //   if(element.name.toLowerCase().includes(pacchetto.keywords.toLowerCase())){
@@ -76,19 +98,3 @@ export class ListaCorsiComponent implements OnInit, OnDestroy {
     //   }
     // });
     // this.corsi = corsiRisultati;
-  }
-
-  filtraHome(keyWordHome:string){
-    // this.router.navigate(['corso']);
-    // let corsiRisultati : Corso[] = [];
-    // corsiProva.forEach(element => {
-
-    //     if(element.name.toLowerCase().includes(keyWordHome.toLowerCase())){
-    //       corsiRisultati.push(element);
-    //     }
-    //   }
-    // );
-    // this.corsi = corsiRisultati;
-  }
-
-}

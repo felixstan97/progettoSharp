@@ -17,28 +17,28 @@ export class CourseService {
 
   public getCourses(): Observable<Corso[]>{
     return this.http.get<Corso[]>(this.courseUrl)
-                          .pipe(tap(data => console.log(JSON.stringify(data))),
+                          .pipe(//tap(data => console.log(JSON.stringify(data))),
                           catchError(this.handleError)
                           );
   }
 
   public getCourseById(id:number): Observable<Corso>{
     return this.http.get<Corso>(`${this.courseUrl}/${id}`)
-                          .pipe(tap(data => console.log(JSON.stringify(data))),
+                          .pipe(//tap(data => console.log(JSON.stringify(data))),
                           catchError(this.handleError)
                           );
   }
 
   public getEditionsByCourseId(id:number): Observable<Edizione>{
     return this.http.get<Edizione>(`${this.courseUrl}editions/${id}`)
-                          .pipe(tap(data => console.log(JSON.stringify(data))),
+                          .pipe(//tap(data => console.log(JSON.stringify(data))),
                           catchError(this.handleError)
                           );
   }
 
   public getModuleByEditionId(id:number): Observable<Modulo>{
     let temp = this.http.get<Modulo>(`${this.courseUrl}modules/${id}`)
-    .pipe(tap(data => console.log(JSON.stringify(data))),
+    .pipe(//tap(data => console.log(JSON.stringify(data))),
     catchError(this.handleError));
     return temp;   
   }

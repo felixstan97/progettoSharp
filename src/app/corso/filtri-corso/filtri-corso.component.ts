@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Corso } from 'src/app/Interfacce/Corso';
-// import { corsiProva } from 'src/app/Interfacce/corsiProva';
+import { CourseService } from 'src/app/shared/course.service';
 import { SharedService } from '../../shared/shared.service';
 
 @Component({
@@ -11,13 +12,30 @@ import { SharedService } from '../../shared/shared.service';
 })
 export class FiltriCorsoComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private sharedService:SharedService) { }
+  constructor(private route: ActivatedRoute,
+              private sharedService:SharedService,
+              private courseService:CourseService) { 
+              }
 
+  subscription!:Subscription;
   searchString ="";
   rice="";
+  corsi:Corso[] = [];
+  minDurata = 0;
+  maxDurata = 0;
+  advancedSearchDisplay = false;
+  categorie : String[] = [];
+  categorieScelte : String[] = [];
   
   ngOnInit(): void {
-    this.generaFiltri();
+    this.courseService.getCourses().subscribe({
+      next: cs => {
+                  this.corsi = cs
+                  this.generaFiltri()
+                },
+      error: err => console.log(err)
+    })
+
     let r = this.route.snapshot.queryParams.searchString;
     if(r){
       this.rice = r;
@@ -30,10 +48,6 @@ export class FiltriCorsoComponent implements OnInit {
     //   // input.value() = searchString;
     // }
   }
-
-  corsi:Corso[] = [];
-
-  minDurata = this.findMinDuration();
 
   findMinDuration(){
     if(this.corsi.length == 0) {
@@ -49,8 +63,6 @@ export class FiltriCorsoComponent implements OnInit {
     }
   }
 
-  maxDurata = this.findMaxDuration();
-
   findMaxDuration(){
     if(this.corsi.length == 0) {
       return 0;
@@ -65,9 +77,6 @@ export class FiltriCorsoComponent implements OnInit {
     }
   }
 
-
-  categorie : String[] = [];
-
   generaFiltri(){
     for (let corso of this.corsi){
       if (!this.categorie.includes(corso.category)){
@@ -75,9 +84,9 @@ export class FiltriCorsoComponent implements OnInit {
       }
     }
     this.categorie.sort();
+    this.minDurata = this.findMinDuration();
+    this.maxDurata = this.findMaxDuration();
   }
-
-  categorieScelte : String[] = [];
 
   scegliCategoria(event:any) {
     if(event.target.value == "*") return;
@@ -97,8 +106,7 @@ export class FiltriCorsoComponent implements OnInit {
       this.categorieScelte.splice(index, 1);
     }
   }
-
-  advancedSearchDisplay = false;
+  // ------------- Material CHIPS -------------------
   
   toggleAdvancedSearch(event: any) {
     
@@ -116,9 +124,8 @@ export class FiltriCorsoComponent implements OnInit {
       advancedSearch.classList.add("height-full");
       freccina.classList = "fas fa-chevron-up";
       this.advancedSearchDisplay = true;
-   }
+    }
   }
-
 
   onSubmit(event:any){
     
@@ -130,8 +137,6 @@ export class FiltriCorsoComponent implements OnInit {
       minDur : event.target.durataMin.value,
       maxDur : event.target.durataMax.value
     }
-   
-   
     
     if(event.target.durataMin.value > event.target.durataMax.value){
       event.target.durataMax.classList.add('red-border');
