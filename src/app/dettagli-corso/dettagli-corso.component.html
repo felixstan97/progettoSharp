@@ -24,22 +24,22 @@
 
                     <mat-accordion *ngIf="edizioni">
                         <mat-expansion-panel *ngFor="let edizione of edizioni; let i = index">
-                          <mat-expansion-panel-header>
-                            <mat-panel-title>
-                                {{i+1}}
-                                {{edizione.startDate}}
-                            </mat-panel-title>
-                          </mat-expansion-panel-header>
-                          <span  *ngIf="edizione.modules">
-                                  <p *ngFor="let modulo of edizione.modules" class="grid5">
-                                      {{modulo.name}}
-                                  </p>
-                          </span>
-                          <span *ngIf="edizione.modules == []">
-                            <p>Non ci sono ancora moduli</p>
-                          </span>
-                          </mat-expansion-panel>
-                      </mat-accordion>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    {{i+1}}
+                                    {{edizione.startDate}}
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <span *ngIf="edizione.modules.length > 0">
+                                <p *ngFor="let modulo of edizione.modules" class="grid5">
+                                    {{modulo.name}}
+                                </p>
+                            </span>
+                            <span *ngIf="edizione.modules.length == 0">
+                                <p>Non ci sono ancora moduli</p>
+                            </span>
+                        </mat-expansion-panel>
+                    </mat-accordion>
 
 
 
