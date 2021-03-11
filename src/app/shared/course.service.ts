@@ -30,24 +30,17 @@ export class CourseService {
   }
 
   public getEditionsByCourseId(id:number): Observable<Edizione>{
-    return this.http.get<Edizione>(`${this.courseUrl}/editions/${id}`)
+    return this.http.get<Edizione>(`${this.courseUrl}editions/${id}`)
                           .pipe(tap(data => console.log(JSON.stringify(data))),
                           catchError(this.handleError)
                           );
   }
 
   public getModuleByEditionId(id:number): Observable<Modulo>{
-    console.log('----id---');
-    console.log(id);
-    let temp = this.http.get<Modulo>(`${this.courseUrl}/modules/${id}`)
+    let temp = this.http.get<Modulo>(`${this.courseUrl}modules/${id}`)
     .pipe(tap(data => console.log(JSON.stringify(data))),
     catchError(this.handleError));
-    console.log('---temp--');
-    console.log(temp);
     return temp;   
-    // return this.http.get<Modulo>(`${this.courseUrl}/modules/${id}`)
-    //                       .pipe(tap(data => console.log(JSON.stringify(data))),
-    //                       catchError(this.handleError));   
   }
 
   handleError(err:any){
@@ -58,7 +51,6 @@ export class CourseService {
       // unsuccesful response code
       errorMessage = `il backend ha ritornato il codice di errore ${err.status} : ${err.body.error}` 
     }
-    console.log(err);
     return throwError(errorMessage);
   }
 }

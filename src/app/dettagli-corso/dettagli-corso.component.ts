@@ -19,7 +19,7 @@ export class DettagliCorsoComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCorso();
-
+    this.edizioni= [];
   }
 
   
@@ -38,14 +38,17 @@ export class DettagliCorsoComponent implements OnInit {
 
     this.courseService.getEditionsByCourseId(id).subscribe({
       next: cs => {this.fillEdizioni(cs)},
-      error: err => console.log(err)
+      error: err => {
+        console.log(err);
+        this.edizioni=[];
+      }
     })
     
-    console.log(this.corso);
-    console.log('---edizioni---');
-    console.log(this.edizioni);
-    console.log('---moduli---');
-    console.log(this.moduli);
+    // console.log(this.corso);
+    // console.log('---edizioni---');
+    // console.log(this.edizioni);
+    // console.log('---moduli---');
+    // console.log(this.moduli);
 
   }
 

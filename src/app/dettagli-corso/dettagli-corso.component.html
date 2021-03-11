@@ -22,17 +22,25 @@
                 <div class="programma">
                     <h4>Edizioni</h4>
 
-                    <mat-accordion *ngIf="edizioni">
+                    <span *ngIf="edizioni.length == 0">
+                        Nessuna edizione presente
+                    </span>
+
+                    <mat-accordion *ngIf="edizioni.length > 0">
                         <mat-expansion-panel *ngFor="let edizione of edizioni; let i = index">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     {{i+1}}
-                                    {{edizione.startDate}}
+                                    Data Inizio: {{edizione.startDate}}
                                 </mat-panel-title>
                             </mat-expansion-panel-header>
+                            <p>Moduli</p>
                             <span *ngIf="edizione.modules.length > 0">
                                 <p *ngFor="let modulo of edizione.modules" class="grid5">
-                                    {{modulo.name}}
+                                    {{modulo.name}} 
+                                    ⏱{{modulo.duration}} ore
+                                    Insegnante: {{modulo.teacherName}}
+                                    <span style="display: block; font-style: italic;"> <br/>{{modulo.description}} </span>
                                 </p>
                             </span>
                             <span *ngIf="edizione.modules.length == 0">
@@ -40,6 +48,7 @@
                             </span>
                         </mat-expansion-panel>
                     </mat-accordion>
+
 
 
 
@@ -89,7 +98,7 @@
                             <li>{{corso.price}}</li>
                         </ul>
                     </li>
-                    <li>Certificazione:
+                    <li>📜 Certificazione:
                         <ul>
                             <li *ngIf="corso.certification; then certificazione else no_certificazione"></li>
                             <ng-template #certificazione>

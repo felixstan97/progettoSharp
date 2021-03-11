@@ -9,5 +9,4 @@ export class Edizione{
     tutorId : number = 0;
     courseId : number = 0;
     modules: Modulo[] = [];
-    prova: string = 'prova';
 }
