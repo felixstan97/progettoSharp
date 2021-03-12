@@ -148,6 +148,7 @@ export class FiltriCorsoComponent implements OnInit {
     }
   
     this.sharedService.search(pacchetto);
+    this.courseService.getElemetiFiltrati(pacchetto);
   }
 
 }

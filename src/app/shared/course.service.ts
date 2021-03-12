@@ -43,6 +43,18 @@ export class CourseService {
     return temp;   
   }
 
+
+  public getElemetiFiltrati(pacchetto:any){
+    let temp = this.http.get(`${this.courseUrl}get-by-filtri/${pacchetto}`)
+                            .pipe(catchError(this.handleError));
+ 
+    console.log("--temp---");
+    console.log(temp);
+    console.log("--pacchetto---");
+    console.log(pacchetto);
+    return temp;
+  }
+
   handleError(err:any){
     let errorMessage : string;
     if(err.error instanceof ErrorEvent) {
