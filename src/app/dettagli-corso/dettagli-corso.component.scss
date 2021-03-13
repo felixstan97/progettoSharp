@@ -1,8 +1,8 @@
 @import "../../variabili.scss";
 
 .dettagliCorsoWrapper {
-    min-height: 100vh;
-    padding-top: 4rem;
+    // min-height: 100vh;
+    padding-top: 6rem;
     width: $dimensioniContainer;
     margin: 0 auto 1rem auto;
 
@@ -30,15 +30,15 @@
 
         .left-side {
             width: 60%;
-
+            height: 100%;
             >* {
                 padding: 1rem;
             }
 
             
             .descrizione {
-                background-color: $color2-l;
-                margin-bottom: 2rem;
+                // background-color: $color2-l;
+                // margin-bottom: 2rem;
 
                 ul {
                     padding-left: 2rem;
@@ -50,7 +50,7 @@
             }
             
             .programma {
-                background-color: $color2-l;
+                // background-color: $color2-l;
 
                 ul {
                     padding-left: 2rem;
@@ -60,7 +60,8 @@
 
         .right-side {
             width: 35%;
-            background-color: $color2-l;
+            height: 100%;
+            // background-color: $color2-l;
 
             >* {
                 padding: 1rem;
@@ -69,7 +70,7 @@
 
             ul {
                 padding-left: 2rem;
-                padding-top: 0;
+                // padding-top: 0;
                 list-style: none;
             }
         }  
@@ -89,18 +90,18 @@
 
     }
 
-    .edizioni {
-        background-color: $color2-l;
-        padding: 1rem;
+    // .edizioni {
+    //     background-color: $color2-l;
+    //     padding: 1rem;
 
-        p {
-            padding-left: 2rem;
-        }
+    //     p {
+    //         padding-left: 2rem;
+    //     }
 
-        ul {
-            padding-left: 2rem;
-        }
-    }
+    //     ul {
+    //         padding-left: 2rem;
+    //     }
+    // }
 
     @media screen and (max-width: 800px) {
         width: 80%;

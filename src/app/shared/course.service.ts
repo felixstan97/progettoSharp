@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { Corso } from '../Interfacce/Corso';
@@ -53,6 +53,15 @@ export class CourseService {
     console.log("--pacchetto---");
     console.log(pacchetto);
     return temp;
+  }
+
+  public searchCourse(pacchetto:any):Observable<Corso[]>{ 
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    console.log(pacchetto);
+    return this.http.post<Corso[]>(`${this.courseUrl}`, pacchetto, { headers }).pipe(
+      catchError(this.handleError)
+    );
+
   }
 
   handleError(err:any){

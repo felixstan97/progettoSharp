@@ -2,92 +2,22 @@
     <div *ngIf="corso" class="dettagliContainer">
         <h2>{{corso.name}}</h2>
         <div class="dettagli-main-content">
-            <div class="left-side">
 
+            <div class="left-side">
 
                 <div class="descrizione">
                     <h4>Programma</h4>
                     <p>
                         {{corso.program}}
                     </p>
-                    <ul>
-                        <li>
-                            Durata: {{corso.duration}}
-                        </li>
-                    </ul>
                 </div>
-
-
-
-                <div class="programma">
-                    <h4>Edizioni</h4>
-
-                    <span *ngIf="edizioni.length == 0">
-                        Nessuna edizione presente
-                    </span>
-
-                    <mat-accordion *ngIf="edizioni.length > 0">
-                        <mat-expansion-panel *ngFor="let edizione of edizioni; let i = index">
-                            <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                    {{i+1}}
-                                    {{edizione.id}}
-                                    Data Inizio: {{edizione.startDate}}
-                                </mat-panel-title>
-                            </mat-expansion-panel-header>
-                            <p>Moduli</p>
-                            <span *ngIf="edizione.modules.length > 0">
-                                <p *ngFor="let modulo of edizione.modules" class="grid5">
-                                    {{modulo.name}} 
-                                    ⏱{{modulo.duration}} ore
-                                    Insegnante: {{modulo.teacherName}}
-                                    <span style="display: block; font-style: italic;"> <br/>{{modulo.description}} </span>
-                                </p>
-                            </span>
-                            <span *ngIf="edizione.modules.length == 0">
-                                <p>Non ci sono ancora moduli</p>
-                            </span>
-                        </mat-expansion-panel>
-                    </mat-accordion>
-
-
-
-
-
-
-
-
-
-                    <!-- <div *ngIf="edizioni">
-                        <div *ngFor="let edizione of edizioni; let i = index">
-                            {{edizione.startDate}}
-                            <i class="fas fa-info-circle" (click)="viewEditionDetails(edizione.id,i)"></i>
-                            
-                            <div *ngIf="corso.certification; then certificazione else no_certificazione"></div>
-                            <ng-template #certificazione>
-                                SI
-                            </ng-template>
-                            <ng-template #no_certificazione>
-                                No
-                            </ng-template>
-
-                            <div class="moduli" *ngIf="edizione.modules">
-                                <div *ngFor="let modulo of edizione.modules">
-                                    {{modulo.id}}
-                                </div>
-                            </div>
-                        </div>
-
-                    </div> -->
-                </div>
-
 
             </div>
-
+            <!--  -->
             <div class="right-side">
                 <h4>Dettagli corso</h4>
                 <ul>
-                    <li>Durata:
+                    <li>Durata in ore:
                         <ul>
                             <li>
                                 {{corso.duration}}
@@ -112,7 +42,47 @@
                     </li>
                 </ul>
             </div>
+            <!--  -->
+        </div>
+
+        <div class="programma">
+            <h4>Edizioni</h4>
+            <span *ngIf="edizioni.length == 0">
+                Nessuna edizione presente
+            </span>
+            
+            <mat-accordion *ngIf="edizioni.length > 0">
+                <mat-expansion-panel *ngFor="let edizione of edizioni; let i = index">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            {{i+1}}
+                            <!-- {{edizione.id}} -->
+                            Data Inizio: {{edizione.startDate}}
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <span>
+                        Descrizione dell'edizione: <br>{{edizione.description}}
+                    </span>
+                    <br><br><p>Moduli</p>
+                    <span *ngIf="edizione.modules.length > 0">
+                        <span *ngFor="let modulo of edizione.modules" class="grid5">
+                            <hr>
+                            Titolo: {{modulo.name}} <br>
+                            Durata: ⏱{{modulo.duration}} ore <br> 
+                            Insegnante: {{modulo.teacherName}} <br><br>
+                            <span style="display: block; font-style: italic;"> <br/>{{modulo.description}} </span>
+                        </span>
+                    </span>
+                    <span *ngIf="edizione.modules.length == 0">
+                        <p>Non ci sono ancora moduli</p>
+                    </span>
+                    <hr>
+                    <p style="display: inline-block; margin-right: 1rem;">Candidati a quest'edizione</p>
+                    <button style="display: inline-block;">Candidati</button>
+                </mat-expansion-panel>
+            </mat-accordion>
 
         </div>
+
     </div>
 </div>

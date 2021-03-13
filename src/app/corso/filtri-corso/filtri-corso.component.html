@@ -12,7 +12,7 @@
                 <div>
                     <label>Prezzo</label><br />
                     <select name="prezzo">
-                        <option value="*">--Tutti--</option>
+                        <option value="">--Tutti--</option>
                         <option value="0">Gratis</option>
                         <option value="1">A pagamento</option>
                     </select>
@@ -21,7 +21,7 @@
                 <div>
                     <label>Categorie</label><br />
                     <select name="categoria" (change)="scegliCategoria($event)">
-                        <option value="*">--Tutte--</option>
+                        <option value="">--Tutte--</option>
                         <option *ngFor="let cat of categorie" [value]="cat">{{cat}}</option>
                     </select>
                 </div>
@@ -29,7 +29,7 @@
                 <div>
                     <label>Certificazione</label><br />
                     <select name="certificazione">
-                        <option value="*">--Tutti--</option>
+                        <option value="">--Tutti--</option>
                         <option value="0">Senza certificazione</option>
                         <option value="1">Con certificazione</option>
                     </select>

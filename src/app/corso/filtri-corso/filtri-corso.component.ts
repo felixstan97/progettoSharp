@@ -130,12 +130,12 @@ export class FiltriCorsoComponent implements OnInit {
   onSubmit(event:any){
     
     let pacchetto = {
-      keywords : event.target.ricerca.value,
-      price : event.target.prezzo.value,
-      categories : this.categorieScelte,
-      cert : event.target.certificazione.value,
-      minDur : event.target.durataMin.value,
-      maxDur : event.target.durataMax.value
+      titleLike : event.target.ricerca.value? event.target.ricerca.value : null,
+      hasPrice : event.target.prezzo.value ? event.target.prezzo.value : null,
+      category : this.categorieScelte[0]? event.target.categorieScelte[0] : null,
+      cert : event.target.certificazione.value? event.target.certificazione.value : null,
+      minDur : event.target.durataMin.value? event.target.durataMin.value : null,
+      maxDur : event.target.durataMax.value? event.target.durataMax.value : null
     }
     
     if(event.target.durataMin.value > event.target.durataMax.value){
@@ -147,8 +147,11 @@ export class FiltriCorsoComponent implements OnInit {
       event.target.durataMin.classList.remove('red-border');
     }
   
-    this.sharedService.search(pacchetto);
-    this.courseService.getElemetiFiltrati(pacchetto);
+    // this.sharedService.search(pacchetto);
+    // this.courseService.getElemetiFiltrati(pacchetto);
+    console.log(pacchetto);
+    this.courseService.searchCourse(pacchetto);
+    // console.log(pacchetto);
   }
 
 }
