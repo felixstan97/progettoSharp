@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 // import { corsiProva } from '../Interfacce/corsiProva';
 import { Corso } from '../Interfacce/Corso';
@@ -6,9 +6,11 @@ import { Edizione } from '../Interfacce/edizione';
 import { Modulo } from '../Interfacce/modulo';
 import { CourseService } from '../shared/course.service';
 import { SharedService } from '../shared/shared.service';
-import { MatDialog } from '@angular/material/dialog';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IscrizioniComponent } from '../iscrizioni/iscrizioni.component';
+import { Observable } from 'rxjs';
+import { ApplicationPerson } from '../Interfacce/application-person';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-dettagli-corso',
@@ -32,8 +34,12 @@ export class DettagliCorsoComponent implements OnInit {
   moduli!: Modulo[];
   showPopup:boolean=false;
 
-  openDialog() {
-    const dialogRef = this.dialog.open(Iscrizioni);
+  openDialog(edizione: Edizione) {
+    const dialogRef = this.dialog.open(Iscrizioni, {
+      data: {
+        courseEditionId : edizione.id
+      }
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -63,13 +69,6 @@ export class DettagliCorsoComponent implements OnInit {
         this.edizioni=[];
       }
     })
-    
-    // console.log(this.corso);
-    // console.log('---edizioni---');
-    // console.log(this.edizioni);
-    // console.log('---moduli---');
-    // console.log(this.moduli);
-
   }
 
   fillEdizioni(cs:any){
@@ -109,15 +108,53 @@ export class DettagliCorsoComponent implements OnInit {
 
 }
 
-
+// -----------------------------------    SECONDO COMPONENTE TS OCIO --------------------
 
 @Component({
   selector: 'iscrizioni',
   templateUrl: './iscrizioni.html',
 })
-export class Iscrizioni {}
+export class Iscrizioni {
+  constructor(@Inject(MAT_DIALOG_DATA) 
+              public data:CourseEditionDialogData, 
+              private courseService:CourseService ){
+
+    console.log(data)
+
+  }
+
+  listaPersone:ApplicationPerson[] = []
+
+  ngOnInit():void{
+    this.getApplicationPerson(this.data.courseEditionId);
+  }
 
 
-/**  Copyright 2020 Google LLC. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at http://angular.io/license */
+  public getApplicationPerson(id:number){
+    let temp = this.courseService.getApplicationPersonService(id).subscribe({
+      next: data => this.fillApplicationPerson(data),
+      error : err => console.log(err)
+    });
+    console.log("metodo-iscrizioni")
+    console.log(temp)
+  }
+
+  public fillApplicationPerson(data:any){
+    let tempData : ApplicationPerson[] = [];
+    data.forEach((element: ApplicationPerson) => {
+      tempData.push(element)
+      });
+    this.listaPersone = tempData;
+    };
+  
+
+}
+
+
+
+// ------------------ INTEFACCIA D'AIUTO ocio --------------------------------------------
+
+
+export interface CourseEditionDialogData{
+  courseEditionId:number;
+}

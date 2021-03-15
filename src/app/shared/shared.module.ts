@@ -8,6 +8,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -20,7 +21,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatIconModule,
     ReactiveFormsModule,
     FormsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule
   ],
 
   exports:[
@@ -30,7 +32,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatIconModule,
     ReactiveFormsModule,
     FormsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule
   ]
 })
 export class SharedModule { }

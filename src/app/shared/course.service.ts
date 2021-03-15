@@ -49,11 +49,6 @@ export class CourseService {
   public getElemetiFiltrati(pacchetto:any){
     let temp = this.http.get(`${this.courseUrl}get-by-filtri/${pacchetto}`)
                             .pipe(catchError(this.handleError));
- 
-    console.log("--temp---");
-    console.log(temp);
-    console.log("--pacchetto---");
-    console.log(pacchetto);
     return temp;
   }
 
@@ -74,6 +69,13 @@ export class CourseService {
     return this.courseSearch$.asObservable();
   }
 
+
+  public getApplicationPersonService(id:number){
+    let temp = this.http.get(`${this.courseUrl}get-application-person/${id}`).pipe(catchError(this.handleError));
+    console.log("service")
+    console.log(temp);
+    return temp;
+  }
 
   handleError(err:any){
     let errorMessage : string;
