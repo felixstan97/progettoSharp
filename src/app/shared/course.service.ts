@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { Corso } from '../Interfacce/Corso';
 import { tap, catchError } from 'rxjs/operators'; 
 import { Edizione } from '../Interfacce/edizione';
@@ -14,6 +14,8 @@ export class CourseService {
   courseUrl = 'http://localhost:8080/api/course/';
 
   constructor(private http : HttpClient) { }
+
+  private courseSearch$ = new BehaviorSubject<Corso[]>([]);
 
   public getCourses(): Observable<Corso[]>{
     return this.http.get<Corso[]>(this.courseUrl)
@@ -55,14 +57,23 @@ export class CourseService {
     return temp;
   }
 
-  public searchCourse(pacchetto:any):Observable<Corso[]>{ 
+  public searchCourse(pacchetto:any){ 
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    console.log(pacchetto);
-    return this.http.post<Corso[]>(`${this.courseUrl}`, pacchetto, { headers }).pipe(
-      catchError(this.handleError)
+  
+    this.http.post<Corso[]>(`${this.courseUrl}`, pacchetto, { headers }).subscribe(
+      {
+        next: data => this.courseSearch$.next(data),
+        error: err => console.log(err)
+      }
     );
 
+
   }
+
+  public getCourseSearch(){
+    return this.courseSearch$.asObservable();
+  }
+
 
   handleError(err:any){
     let errorMessage : string;

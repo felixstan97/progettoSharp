@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { Corso } from 'src/app/Interfacce/Corso';
 // import { CoreServiceService } from '../../shared/course-service.service'
 import { CourseService } from '../../shared/course.service'
+import { PacchettoRicercaCorsi } from 'src/app/Interfacce/Pacchetto';
 
 @Component({
   selector: 'app-lista-corsi',
@@ -38,8 +39,9 @@ export class ListaCorsiComponent implements OnInit, OnDestroy {
     // if(searchString) {
     //   this.filtraHome(searchString);
     // }
-
-    this.courseService.getCourses().subscribe({
+    let pacchetto : PacchettoRicercaCorsi = {minDur:0,maxDur:10000};
+    this.courseService.searchCourse(pacchetto);
+    this.courseService.getCourseSearch().subscribe({
       next: cs => this.corsi = cs,
       error: err => console.log(err)
     })

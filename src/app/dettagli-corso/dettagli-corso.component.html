@@ -60,6 +60,8 @@
                             Data Inizio: {{edizione.startDate}}
                         </mat-panel-title>
                     </mat-expansion-panel-header>
+                    <button mat-button (click)="openDialog()">Iscrivi studente</button>
+                    <!-- <span (click)="toIscrizioni(edizione.id)">Iscrivi studente</span><br> -->
                     <span>
                         Descrizione dell'edizione: <br>{{edizione.description}}
                     </span>
@@ -85,4 +87,12 @@
         </div>
 
     </div>
+
+    <!-- <div class="sNero">
+
+    </div>
+    <div  class="pop-up">
+        pop-up
+    </div> -->
+
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Corso } from 'src/app/Interfacce/Corso';
+import { PacchettoRicercaCorsi } from 'src/app/Interfacce/Pacchetto';
 import { CourseService } from 'src/app/shared/course.service';
 import { SharedService } from '../../shared/shared.service';
 
@@ -129,15 +130,36 @@ export class FiltriCorsoComponent implements OnInit {
 
   onSubmit(event:any){
     
-    let pacchetto = {
-      titleLike : event.target.ricerca.value? event.target.ricerca.value : null,
-      hasPrice : event.target.prezzo.value ? event.target.prezzo.value : null,
-      category : this.categorieScelte[0]? event.target.categorieScelte[0] : null,
-      cert : event.target.certificazione.value? event.target.certificazione.value : null,
-      minDur : event.target.durataMin.value? event.target.durataMin.value : null,
-      maxDur : event.target.durataMax.value? event.target.durataMax.value : null
+    let pacchetto:PacchettoRicercaCorsi ={ };
+
+    if(event.target.ricerca.value){
+      pacchetto.titleLike = event.target.ricerca.value;
     }
-    
+    if(event.target.prezzo.value){
+      pacchetto.hasPrice = !! event.target.prezzo.value;
+    }
+    if(this.categorieScelte[0]){
+      pacchetto.category = this.categorieScelte[0];
+    }
+    if(event.target.certificazione.value){
+      // if(event.target.certificazione.value == "false"){
+      //   pacchetto.cert = false;
+      // }else {
+      //   pacchetto.cert = true;
+      // }
+      pacchetto.cert = event.target.certificazione.value == "true"
+    }
+    if(event.target.durataMin.value){
+      pacchetto.minDur = + event.target.durataMin.value;
+    }
+    if(event.target.durataMax.value){
+      pacchetto.maxDur = + event.target.durataMax.value;
+    }
+
+    console.log("-------")
+    console.log(pacchetto)
+    console.log("-------")
+
     if(event.target.durataMin.value > event.target.durataMax.value){
       event.target.durataMax.classList.add('red-border');
       event.target.durataMin.classList.add('red-border');
@@ -146,11 +168,15 @@ export class FiltriCorsoComponent implements OnInit {
       event.target.durataMax.classList.remove('red-border');
       event.target.durataMin.classList.remove('red-border');
     }
-  
+    this.courseService.searchCourse(pacchetto);
+
+
+
+
     // this.sharedService.search(pacchetto);
     // this.courseService.getElemetiFiltrati(pacchetto);
-    console.log(pacchetto);
-    this.courseService.searchCourse(pacchetto);
+    // console.log(pacchetto);
+   
     // console.log(pacchetto);
   }
 

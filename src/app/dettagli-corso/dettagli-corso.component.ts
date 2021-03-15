@@ -1,11 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 // import { corsiProva } from '../Interfacce/corsiProva';
 import { Corso } from '../Interfacce/Corso';
 import { Edizione } from '../Interfacce/edizione';
 import { Modulo } from '../Interfacce/modulo';
 import { CourseService } from '../shared/course.service';
 import { SharedService } from '../shared/shared.service';
+import { MatDialog } from '@angular/material/dialog';
+import {MatDialogModule} from '@angular/material/dialog';
+import { IscrizioniComponent } from '../iscrizioni/iscrizioni.component';
 
 @Component({
   selector: 'app-dettagli-corso',
@@ -15,18 +18,35 @@ import { SharedService } from '../shared/shared.service';
 export class DettagliCorsoComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
-              private courseService:CourseService) { }
+              private router:Router,
+              private courseService:CourseService,
+              public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getCorso();
     this.edizioni= [];
   }
 
-  
   corso! : Corso;
   edizioni!: Edizione[];
   moduli!: Modulo[];
-  
+  showPopup:boolean=false;
+
+  openDialog() {
+    const dialogRef = this.dialog.open(Iscrizioni);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  toIscrizioni(id:number){
+    // this.router.navigate(['iscrizioni/'+id])
+    // console.log(id);
+    this.router.navigate(['iscrizioni/'], {queryParams: {searchString : id}});
+    window.scroll(0,0);
+  }
+
   getCorso(): void {
     const id = +this.route.snapshot.paramMap.get('id')!;
     
@@ -88,3 +108,16 @@ export class DettagliCorsoComponent implements OnInit {
    }
 
 }
+
+
+
+@Component({
+  selector: 'iscrizioni',
+  templateUrl: './iscrizioni.html',
+})
+export class Iscrizioni {}
+
+
+/**  Copyright 2020 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license */

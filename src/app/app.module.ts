@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from './layout/layout.module';
 import { HttpClientModule} from '@angular/common/http';
+import { IscrizioniComponent } from './iscrizioni/iscrizioni.component';
 
 
 
@@ -33,6 +34,10 @@ const routes: Routes = [
     loadChildren: () => import('./registration/registration.module').then(m => m.RegistrationModule)
   },
   {
+    path:"iscrizioni",
+    loadChildren: () => import('./iscrizioni/iscrizioni.module').then(m => m.IscrizioniModule)
+  },
+  {
     path:"**",
     redirectTo:"home",
     pathMatch:"full"
@@ -42,7 +47,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    IscrizioniComponent
   ],
   imports: [
     BrowserModule,

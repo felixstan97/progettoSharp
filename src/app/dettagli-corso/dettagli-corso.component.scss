@@ -2,6 +2,8 @@
 
 .dettagliCorsoWrapper {
     // min-height: 100vh;
+    
+    position: relative;
     padding-top: 6rem;
     width: $dimensioniContainer;
     margin: 0 auto 1rem auto;
@@ -21,6 +23,7 @@
         padding: 1.5rem;
         margin-top: 1rem;
         background-color: #fff;
+
     }
 
     .dettagli-main-content {
@@ -90,18 +93,21 @@
 
     }
 
-    // .edizioni {
-    //     background-color: $color2-l;
-    //     padding: 1rem;
+    .pop-up{
+        position: absolute;
+        background-color: rgb(204, 109, 109);
+        width: 80%;
+        height: 60%;
+        left: 10%;
+        top: 30%;
+    }
+    .sNero{
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.397);
+        width: 100hw;
+        height: 100hv;
+    }
 
-    //     p {
-    //         padding-left: 2rem;
-    //     }
-
-    //     ul {
-    //         padding-left: 2rem;
-    //     }
-    // }
 
     @media screen and (max-width: 800px) {
         width: 80%;
