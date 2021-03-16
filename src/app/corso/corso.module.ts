@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { CorsoComponent } from './corso.component';
-import { DettagliCorsoComponent } from '../dettagli-corso/dettagli-corso.component';
+import { DettagliCorsoComponent, Iscrizioni } from '../dettagli-corso/dettagli-corso.component';
 import { SharedModule } from '../shared/shared.module';
 import { FiltriCorsoComponent } from './filtri-corso/filtri-corso.component';
 import { ListaCorsiComponent } from './lista-corsi/lista-corsi.component';
@@ -25,7 +25,8 @@ const routes : Routes = [
     CorsoComponent,
     FiltriCorsoComponent,
     ListaCorsiComponent,
-    DettagliCorsoComponent
+    DettagliCorsoComponent,
+    Iscrizioni
   ],
   imports: [
     SharedModule,

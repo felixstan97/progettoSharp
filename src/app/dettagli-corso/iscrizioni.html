@@ -1,10 +1,66 @@
+<div class="contenitorIscrizioniWrapper">
+  <!-- *ngFor="let persona of listaPersone" -->
+  <div class="contenitoreLista" >
+    
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Email</th>
+            <th scope="col">Data iscrizione</th>
+            <th scope="col">Note</th>
+            <th scope="col">Rimuovi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of listaPersone; let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{p.firstName}}</td>
+            <td>{{p.lastName}}</td>
+            <td>{{p.email}}</td>
+            <td>{{p.applicationDate}}</td>
+            <td>{{p.comment}}</td>
+            <td>X</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Aggiungi studenti all'edizione</mat-label>
+      <input type="text"
+      placeholder="Ricerca LIKE per Nome Cognome Email"
+      matInput
+      (input)="changeAutoComplete()"
+      [(ngModel)]="inputLike"
+      name="inputLike"
+      [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of listaStudenti" name="selectedStudent"  [value]="option">
+          {{option.firstName}} 
+          {{option.lastName}}
+          {{option.email}}
+          {{option.id}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
 
-  <h3>Develop across all platforms</h3>
-  <p>Learn one way to build applications with Angular and reuse your code and abilities to build
-    apps for any deployment target. For web, mobile web, native mobile and native desktop.</p>
+  <button (click)="iscrivi()">Iscrivi studente selezionato</button>
+  
+  
+</div>  
 
 
-   id:  {{ data.courseEditionId }}
-<!-- Copyright 2020 Google LLC. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at http://angular.io/license -->
+
+<!-- {{persona.idPerson}}
+{{persona.idAppliction}}
+{{persona.firstName}}
+{{persona.lastName}}
+{{persona.email}}
+{{persona.status}}
+{{persona.applicationDate}}
+{{persona.comment}} -->

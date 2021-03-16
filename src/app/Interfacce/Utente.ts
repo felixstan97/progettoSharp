@@ -13,3 +13,4 @@ export interface Utente {
     regione : String;
     corsi : String[];
 }
+

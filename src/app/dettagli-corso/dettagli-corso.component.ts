@@ -11,6 +11,12 @@ import { IscrizioniComponent } from '../iscrizioni/iscrizioni.component';
 import { Observable } from 'rxjs';
 import { ApplicationPerson } from '../Interfacce/application-person';
 import { element } from 'protractor';
+import { FormControl } from '@angular/forms';
+import { map, startWith } from 'rxjs/operators';
+import { Student } from '../Interfacce/Student';
+import { StudentSearchInfo } from '../Interfacce/StudentSearchInfo';
+import { EnrollmentInfo } from '../Interfacce/EnrollmentInfo';
+import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-dettagli-corso',
@@ -113,20 +119,59 @@ export class DettagliCorsoComponent implements OnInit {
 @Component({
   selector: 'iscrizioni',
   templateUrl: './iscrizioni.html',
+  styleUrls: ['./dettagli-corso.component.scss']
 })
-export class Iscrizioni {
+export class Iscrizioni implements OnInit  {
   constructor(@Inject(MAT_DIALOG_DATA) 
               public data:CourseEditionDialogData, 
               private courseService:CourseService ){
 
-    console.log(data)
-
   }
 
+
+  myControl = new FormControl();
+  // options: string[] = [];
+  filteredOptions!: Observable<string[]>;
+
+
+  // private _filter(value: string): string[] {
+  //   const filterValue = value.toLowerCase();
+
+  //   return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
+  // }
+
+
   listaPersone:ApplicationPerson[] = []
+  listaStudenti:Student[] = [];
+  inputLike:any = "";
+  selectedStudent:Student | null = null;
 
   ngOnInit():void{
     this.getApplicationPerson(this.data.courseEditionId);
+  }
+
+  // ngOnChange(){
+  //   console.log("funziona change normale ")
+  //   this.changeAutoComplete();
+  // }
+
+  changeAutoComplete():void{
+    console.log("change funziona")
+    let objectLike:StudentSearchInfo = {}
+    objectLike.emailLike = this.inputLike;
+    objectLike.nameLike = this.inputLike;
+    objectLike.surnameLike = this.inputLike;
+    objectLike.limit = 5;
+
+    this.courseService.searchStudent(objectLike).subscribe({
+      next: data => {
+        this.listaStudenti = data.map(obj => Student.fromObject(obj));
+        for(let st of this.listaStudenti){
+          console.log(st.constructor)
+        }
+      },
+      error: err => console.log(err)
+    })
   }
 
 
@@ -139,14 +184,35 @@ export class Iscrizioni {
     console.log(temp)
   }
 
+  
   public fillApplicationPerson(data:any){
     let tempData : ApplicationPerson[] = [];
     data.forEach((element: ApplicationPerson) => {
       tempData.push(element)
       });
     this.listaPersone = tempData;
-    };
+    console.log("fill application person")
+    console.log(tempData)
+    }
   
+    public toString(student:Student){
+      return `${student.firstName} ${student.lastName} ${student.email}`;
+    }
+
+    public iscrivi(){
+      let info:EnrollmentInfo = {idStudent:this.inputLike.id, idEdition:this.data.courseEditionId};
+
+      this.courseService.enrollStudent(info).subscribe({
+        next: data => {
+          console.log("fatto subscribe"),
+          console.log(data)
+          this.getApplicationPerson(this.data.courseEditionId);
+        },
+
+        error: err => console.log(err)
+      });
+      console.log(this.inputLike.constructor);
+    }
 
 }
 

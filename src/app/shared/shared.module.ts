@@ -7,9 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -22,7 +23,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     FormsModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
+    MatAutocompleteModule,
+    MatInputModule
   ],
 
   exports:[
@@ -33,7 +36,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     FormsModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
+    MatAutocompleteModule,
+    MatInputModule
   ]
 })
 export class SharedModule { }

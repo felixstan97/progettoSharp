@@ -1,10 +1,14 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { Corso } from '../Interfacce/Corso';
-import { tap, catchError } from 'rxjs/operators'; 
+import { tap, catchError, ignoreElements } from 'rxjs/operators'; 
 import { Edizione } from '../Interfacce/edizione';
 import { Modulo } from '../Interfacce/modulo';
+import { ApplicationPerson } from '../Interfacce/application-person';
+import { Student } from '../Interfacce/Student';
+import { StudentSearchInfo } from '../Interfacce/StudentSearchInfo';
+import { EnrollmentInfo } from '../Interfacce/EnrollmentInfo';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +16,14 @@ import { Modulo } from '../Interfacce/modulo';
 export class CourseService {
 
   courseUrl = 'http://localhost:8080/api/course/';
+  editionUrl = 'http://localhost:8080/api/edition/';
+  studentUrl = 'http://localhost:8080/api/student/';
+  applicationUrl = 'http://localhost:8080/api/application/';
 
   constructor(private http : HttpClient) { }
 
   private courseSearch$ = new BehaviorSubject<Corso[]>([]);
+  private searchStudent$ = new BehaviorSubject<ApplicationPerson[]>([]);
 
   public getCourses(): Observable<Corso[]>{
     return this.http.get<Corso[]>(this.courseUrl)
@@ -61,21 +69,50 @@ export class CourseService {
         error: err => console.log(err)
       }
     );
-
-
   }
 
   public getCourseSearch(){
     return this.courseSearch$.asObservable();
   }
 
-
-  public getApplicationPersonService(id:number){
-    let temp = this.http.get(`${this.courseUrl}get-application-person/${id}`).pipe(catchError(this.handleError));
-    console.log("service")
-    console.log(temp);
+    //--  APPLICATIONS ---
+  public getApplicationPersonService(id:number): Observable<any>{
+    let temp = this.http.get(`${this.editionUrl}${id}/applications`).pipe(catchError(this.handleError));
+      console.log("service")
+      console.log(temp);
     return temp;
   }
+
+ //--------- SEARCH STUDENTS------
+  public searchStudent(info:StudentSearchInfo):Observable<Student[]>{
+    let params = new HttpParams();
+
+    if(info.emailLike){
+      params = params.set('emailLike', info.emailLike);
+    }
+    if(info.nameLike){
+      params = params.set('nameLike', info.nameLike);
+    }
+    if(info.surnameLike){
+      params = params.set('surnameLike', info.surnameLike);
+    }
+    if(info.limit){
+      params = params.set('limit', info.limit.toString());
+    }
+
+    return this.http.get<Student[]>(this.studentUrl, { params })
+          .pipe(catchError(this.handleError));
+  }
+
+  public enrollStudent(ids:EnrollmentInfo):Observable<ApplicationPerson>{
+    const headers = new HttpHeaders({"Content-Type" : "application/json"});
+    return this.http.post<ApplicationPerson>(this.applicationUrl, ids, { headers });
+
+  }
+
+
+
+
 
   handleError(err:any){
     let errorMessage : string;

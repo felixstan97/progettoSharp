@@ -108,8 +108,40 @@
         height: 100hv;
     }
 
-
+    
     @media screen and (max-width: 800px) {
         width: 80%;
+    }
+}
+
+
+.contenitorIscrizioniWrapper{
+
+    width: 80%;
+    height: 500px;
+    
+    .inputStudent{
+        background-color: $color2-l;
+        width: 100%;
+        padding: .2rem 1rem;
+        
+    }
+    
+    .contenitoreLista{
+        height:350px; 
+        width:127%;
+        overflow-y: scroll;
+        margin-bottom: 2rem;
+        margin-right: 0;
+    }
+    
+    .example-form {
+        min-width: 150px;
+        max-width: 500px;
+        width: 100%;
+    }
+    
+    .example-full-width {
+        width: 100%;
     }
 }
