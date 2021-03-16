@@ -83,6 +83,7 @@ export class CourseService {
     return temp;
   }
 
+
  //--------- SEARCH STUDENTS------
   public searchStudent(info:StudentSearchInfo):Observable<Student[]>{
     let params = new HttpParams();
@@ -109,9 +110,6 @@ export class CourseService {
     return this.http.post<ApplicationPerson>(this.applicationUrl, ids, { headers });
 
   }
-
-
-
 
 
   handleError(err:any){
